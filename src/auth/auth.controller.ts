@@ -49,10 +49,6 @@ export class AuthController {
     |--------------------------------------------------------------------------
     */
 
-  @Post('admin/register')
-  async adminRegister(@Body() dto: CreateUserDto) {
-    return await this.authService.adminRegister(dto);
-  }
 
   /*
    |--------------------------------------------------------------------------

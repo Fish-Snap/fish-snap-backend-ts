@@ -96,7 +96,7 @@ export class AuthRepository {
 
     private async signJwtToken(
         idUser: string,
-        role: TypeRoleUser,
+        role: string,
         access: string,
         expire: string,
     ): Promise<{ access_token: string }> {

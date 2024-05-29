@@ -135,7 +135,7 @@ model FishModel {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@index([id])
+  @@index([id, code])
 }
 
 model FishScanHistory {
@@ -151,5 +151,5 @@ model FishScanHistory {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@index([id])
+  @@index([id, idFishModel, codeFishModel])
 }

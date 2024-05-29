@@ -1,8 +1,7 @@
-import { RoleEnum } from '../../helpers/helper';
-
+import { TypeRoleAdmin, TypeRoleUser } from '@prisma/client';
 export type PayloadToken = {
   sub: string;
-  role: RoleEnum;
+  role: string;
   access: string;
   expire: string;
 };
