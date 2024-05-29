@@ -1,0 +1,155 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl"]
+}
+
+// for local
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// /*
+// |--------------------------------------------------------------------------
+// | Enum Value
+// |--------------------------------------------------------------------------
+// */
+
+enum TypeRoleUser {
+  ADMIN
+  USER
+}
+
+enum TypeRoleAdmin {
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum TypeStatusUser {
+  ACTIVE
+  INACTIVE
+  BANNED
+}
+
+enum TypeSetting {
+  AUTOMATION_SEND_EMAIL_VERIFICATION
+  REQUIRE_VERIF_EMAIL_FOR_LOGIN
+}
+
+enum TypeNews {
+  INTERNAL
+  EXTERNAL
+}
+
+// /*
+// |--------------------------------------------------------------------------
+// | Model
+// |--------------------------------------------------------------------------
+// */
+
+model GlobalSetting {
+  id          Int         @id @default(autoincrement())
+  typeSetting TypeSetting @unique
+  name        String
+  description String
+  isActivated Boolean
+}
+
+model User {
+  id              String         @id @default(uuid())
+  username        String         @unique
+  email           String         @unique
+  password        String
+  profilePic      String?
+  role            TypeRoleUser   @default(USER)
+  isVerifiedEmail Boolean        @default(false)
+  status          TypeStatusUser @default(ACTIVE)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // index
+  @@index([id, username, email])
+}
+
+model UserAdmin {
+  id         String         @id @default(uuid())
+  username   String         @unique
+  email      String         @unique
+  password   String
+  profilePic String?
+  role       TypeRoleAdmin  @default(ADMIN)
+  status     TypeStatusUser @default(ACTIVE)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // index
+  @@index([id, username, email])
+}
+
+model News {
+  id              String   @id @default(uuid())
+  title           String
+  content         String[] @default([])
+  urlThumbImg     String?
+  urlHeaderImg    String?
+  urlExternalNews String?
+  publicationAt   DateTime
+  idAdmin         String?
+  nameAuthor      String //name author or admin
+  type            TypeNews @default(INTERNAL)
+
+  idCategoryNews String
+  categoryNews   CategoryNews @relation(fields: [idCategoryNews], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([id])
+}
+
+model CategoryNews {
+  id        String   @id @default(uuid())
+  name      String
+  tags      String[] @default([])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  news      News[]
+
+  @@index([id])
+}
+
+model FishModel {
+  id            Int      @id @default(autoincrement())
+  code          String   @unique
+  name          String
+  urlImg        String
+  otherNames    String[] @default([])
+  description   String[]
+  productRecipe Json[]   @default([])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([id])
+}
+
+model FishScanHistory {
+  id            String   @id @default(uuid())
+  idFishModel   Int
+  codeFishModel String
+  name          String
+  urlImg        String
+  otherNames    String[] @default([])
+  description   String[]
+  productRecipe Json[]   @default([])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([id])
+}

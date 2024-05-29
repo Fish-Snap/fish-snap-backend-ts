@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  postgres_fishsnap:
+    container_name: fishsnap_postgres_db_dev
+    image: postgres:14
+    ports:
+      - ${PORT_DB}:${PORT_DEFAULT_5432}
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER_DEV}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD_DEV}
+      POSTGRES_DB: ${POSTGRES_DB_DEV}
+    volumes:
+      - 'data-postgres-development:/var/lib/postgresql/data'
+
+volumes:
+  data-postgres-development:
+    name: data-postgres-development
+  data-postgres-development-migrate:
+    name: data-postgres-development-migrate
+
+networks:
+  default:
+    name: fishsnap-network-dev
+    external: true
