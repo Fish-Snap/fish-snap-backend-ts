@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { DbService } from '../../db.service';
+import { RegisterUserDto } from '../../../auth/dto/register-user.dto';
 
 
 @Injectable()
@@ -33,5 +34,15 @@ export class UserQuery extends DbService {
                 status: true,
             },
         });
+    }
+
+    async register(payload: RegisterUserDto) {
+        return await this.prisma.user.create({
+            data: {
+                username: payload.username,
+                email: payload.email,
+                password: payload.password
+            }
+        })
     }
 }

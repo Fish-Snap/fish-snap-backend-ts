@@ -8,6 +8,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { LoginUserDto } from './dto/login-user.dto';
 import { UserQuery } from '../prisma/queries/user/user.query';
 import { TypeRoleUser } from '@prisma/client';
+import { RegisterUserDto } from './dto/register-user.dto';
 @Injectable()
 export class AuthRepository {
     constructor(
@@ -49,6 +50,29 @@ export class AuthRepository {
       | Auth user function
       |--------------------------------------------------------------------------
       */
+    async register(dto: RegisterUserDto) {
+        dto.username = dto.username.toLowerCase().trim();
+        // hashing password from body dto
+        const salt = await bcrypt.genSalt();
+        const hash = await bcrypt.hash(dto.password, salt);
+        try {
+            dto.password = hash;
+            // check user exist
+            await this.checkUserExist(dto.username, dto.email);
+
+            const registerUser = await this.userQuery.register(dto)
+            if (!registerUser) throw new BadRequestException('User gagal ditambahkan');
+            return await this.signJwtToken(
+                registerUser.id,
+                registerUser.role,
+                TokenType.FULL,
+                '7d',
+            );
+        } catch (error) {
+            throw error;
+        }
+    }
+
     async login(dto: LoginUserDto) {
         try {
             const user = await this.findUserByUsernameOrEmailOrThrow(dto.username || dto.email);

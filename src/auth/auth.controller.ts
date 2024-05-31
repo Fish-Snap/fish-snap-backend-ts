@@ -17,6 +17,7 @@ import { Access, Roles } from './decorator';
 import { TokenType } from '../helpers/helper';
 import { LoginUserDto } from './dto/login-user.dto';
 import { Request } from 'express'
+import { RegisterUserDto } from './dto/register-user.dto';
 @Controller('auth')
 export class AuthController {
   constructor(
@@ -24,14 +25,16 @@ export class AuthController {
     private readonly httpHelper: HttpHelper,
   ) { }
 
+  @Post('register')
+  async register(@Body() dto: RegisterUserDto, @Res() res) {
+    const result = await this.authService.register(dto);
+    return this.httpHelper.formatResponse(res, HttpStatus.CREATED, result)
+  }
+
   @Post('login')
   async login(@Body() dto: LoginUserDto, @Res() res) {
-    {
-      const token = await this.authService.login(dto);
-      return res
-        .status(HttpStatus.OK)
-        .json(token);
-    }
+    const token = await this.authService.login(dto);
+    return this.httpHelper.formatResponse(res, HttpStatus.OK, token)
   }
 
   /*
