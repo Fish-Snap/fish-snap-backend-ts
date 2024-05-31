@@ -11,7 +11,6 @@ import {
   Patch,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { CreateUserDto } from './dto/create-user.dto';
 import { HttpHelper } from '../helpers/http-helper';
 import { AccessGuard, JwtGuard, RoleGuard } from './guard';
 import { Access, Roles } from './decorator';
@@ -33,14 +32,6 @@ export class AuthController {
         .status(HttpStatus.OK)
         .json(token);
     }
-  }
-
-  @UseGuards(JwtGuard, AccessGuard)
-  @Access(TokenType.FULL)
-  @Patch('password/update')
-  async updateForgotPassword(@Req() req: Request, @Body('newPassword') newPassword: string, @Res() res) {
-    const result = await this.authService.updateForgotPassword(req.headers.authorization, newPassword)
-    return this.httpHelper.formatResponse(res, HttpStatus.OK, result)
   }
 
   /*

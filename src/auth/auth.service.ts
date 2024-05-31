@@ -17,11 +17,6 @@ export class AuthService {
     return await this.authRepository.refreshJwtToken(refreshToken);
   }
 
-  async updateForgotPassword(token: string, password: string) {
-    if (!password) throw new BadRequestException('newPassword tidak boleh kosong');
-    return await this.authRepository.updateForgotPassword(token, password);
-  }
-
   /*
     |--------------------------------------------------------------------------
     | Auth admin function

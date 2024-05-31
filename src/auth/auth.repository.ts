@@ -5,7 +5,6 @@ import * as bcrypt from 'bcrypt';
 import { PayloadToken } from './type';
 import { TokenType } from '../helpers/helper';
 import { PrismaService } from '../prisma/prisma.service';
-import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import { UserQuery } from '../prisma/queries/user/user.query';
 import { TypeRoleUser } from '@prisma/client';
@@ -71,15 +70,6 @@ export class AuthRepository {
         }
     }
 
-    async updateForgotPassword(token: string, password: string) {
-        const { sub } = await this.decodeJwtToken(token);
-        const salt = await bcrypt.genSalt();
-        const hash = await bcrypt.hash(password, salt);
-        const user = await this.userQuery.update(sub, { password: hash });
-        if (!user) throw new BadRequestException('User gagal diubah');
-
-        return user;
-    }
 
 
     /*
