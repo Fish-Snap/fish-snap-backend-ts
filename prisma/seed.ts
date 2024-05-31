@@ -30,13 +30,14 @@ async function seedFishModel(data: IFishModel[]) {
         const fishModels = []
         for (const d of data) {
             // get data from d variable
-            const { code, productRecipe } = d
+            const { code, productRecipe, location } = d
             // check if data exist
             const isExist = await prisma.fishModel.findUnique({ where: { code } })
             if (isExist) continue
             const productRecipeConvert = JSON.parse(JSON.stringify(productRecipe)) as Prisma.JsonArray
+            const locationConvert = JSON.parse(JSON.stringify(location)) as Prisma.JsonArray
 
-            fishModels.push({ ...d, productRecipe: productRecipeConvert })
+            fishModels.push({ ...d, productRecipe: productRecipeConvert, location: locationConvert })
         }
         await prisma.fishModel.createMany({ data: fishModels })
         console.log(`successfully seed the FishModel ${fishModels.length} datas.`)

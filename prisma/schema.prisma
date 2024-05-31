@@ -124,13 +124,15 @@ model CategoryNews {
 }
 
 model FishModel {
-  id            Int      @id @default(autoincrement())
-  code          String   @unique
-  name          String
-  urlImg        String
-  otherNames    String[] @default([])
-  description   String[]
-  productRecipe Json[]   @default([])
+  id             Int      @id @default(autoincrement())
+  code           String   @unique
+  name           String
+  scientificName String
+  urlImg         String
+  otherNames     String[] @default([])
+  description    String[]
+  productRecipe  Json[]   @default([])
+  location       Json[]   @default([])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

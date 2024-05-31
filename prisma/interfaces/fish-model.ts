@@ -1,10 +1,13 @@
 export interface IFishModel {
     code: string;
     name: string;
+    scientificName: string;
     urlImg: string;
     otherNames: string[];
     description: string[];
     productRecipe: ProductRecipe[];
+    location: Location[]
+
 }
 
 interface ProductRecipe {
@@ -12,4 +15,9 @@ interface ProductRecipe {
     description: string;
     material: string[];
     steps: string[]
+}
+
+interface Location {
+    name: string;
+    description: string;
 }
