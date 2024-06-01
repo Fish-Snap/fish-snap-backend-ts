@@ -100,7 +100,12 @@ export class AuthRepository {
 
     async login(dto: LoginUserDto) {
         try {
+            dto.username = dto.username.toLowerCase().trim();
+            dto.email = dto.email.toLowerCase().trim();
             const user = await this.findUserByUsernameOrEmailOrThrow(dto.username || dto.email);
+            if (!user.isVerifiedEmail) {
+                throw new BadRequestException('Verifikasi email terlebih dahulu');
+            }
 
             const validPassword = await bcrypt.compare(dto.password, user.password);
 
