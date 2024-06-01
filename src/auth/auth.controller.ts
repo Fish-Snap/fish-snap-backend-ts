@@ -27,8 +27,8 @@ export class AuthController {
 
   @Post('register')
   async register(@Body() dto: RegisterUserDto, @Res() res) {
-    const result = await this.authService.register(dto);
-    return this.httpHelper.formatResponse(res, HttpStatus.CREATED, result)
+    await this.authService.register(dto);
+    return this.httpHelper.formatResponse(res, HttpStatus.CREATED, {})
   }
 
   @Post('login')

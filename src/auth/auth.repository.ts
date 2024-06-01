@@ -7,14 +7,16 @@ import { TokenType } from '../helpers/helper';
 import { PrismaService } from '../prisma/prisma.service';
 import { LoginUserDto } from './dto/login-user.dto';
 import { UserQuery } from '../prisma/queries/user/user.query';
-import { TypeRoleUser } from '@prisma/client';
+import { PrismaClient, TypeRoleUser } from '@prisma/client';
 import { RegisterUserDto } from './dto/register-user.dto';
-import { sendVerificationEmail } from '../helpers/email-helper';
+import { MailService } from '../mail/mail.service';
+import { SendVerifyEmailDto } from '../mail/dto/send-verify-email.dto';
 @Injectable()
 export class AuthRepository {
     constructor(
         private prisma: PrismaService,
         private jwt: JwtService,
+        private mailService: MailService,
         private config: ConfigService,
         private readonly userQuery: UserQuery
     ) { }
@@ -56,33 +58,34 @@ export class AuthRepository {
         // hashing password from body dto
         const salt = await bcrypt.genSalt();
         const hash = await bcrypt.hash(dto.password, salt);
+        dto.password = hash;
+
         try {
-            dto.password = hash;
-            // check user exist
-            await this.checkUserExist(dto.username, dto.email);
+            // Start a transaction
+            await this.prisma.$transaction(async (tx: PrismaClient) => {
+                // Check if user exists
+                await this.checkUserExist(dto.username, dto.email);
 
-            const registerUser = await this.userQuery.register(dto)
-            if (!registerUser) throw new BadRequestException('User gagal ditambahkan');
+                // Register the user
+                const registerUser = await this.userQuery.register(dto, tx); // Pass the transaction context
+                if (!registerUser) {
+                    throw new BadRequestException('User gagal ditambahkan');
+                }
 
-            // Send email verif
-            const verifyLink = `${process.env.API_URL}/verify/${registerUser.id}/${registerUser.codeVerify}`
-            const message = `Click this link to verification your email: ${verifyLink}`
-            await sendVerificationEmail(
-                dto.email,
-                'FishSnap Email Verification',
-                message
-            )
-
-            return await this.signJwtToken(
-                registerUser.id,
-                registerUser.role,
-                TokenType.FULL,
-                '7d',
-            );
+                // Send email verification
+                const verifyLink = `${process.env.API_URL}/verify/${registerUser.id}/${registerUser.codeVerify}`;
+                const sendverifyEmailDto: SendVerifyEmailDto = {
+                    email: dto.email,
+                    username: dto.username,
+                    verificationLink: verifyLink,
+                };
+                await this.mailService.sendEmailVerify(sendverifyEmailDto)
+            });
         } catch (error) {
             throw error;
         }
     }
+
 
     async login(dto: LoginUserDto) {
         try {

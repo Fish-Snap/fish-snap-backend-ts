@@ -8,6 +8,7 @@ import { MomentModule } from '@ccmos/nestjs-moment';
 import { ConfigModule } from '@nestjs/config';
 import { HelperModule } from '../helpers/helper.module';
 import { AuthRepository } from './auth.repository';
+import { MailModule } from '../mail/mail.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { AuthRepository } from './auth.repository';
     MomentModule,
     ConfigModule,
     HelperModule,
+    MailModule
   ],
   controllers: [AuthController],
   providers: [AuthService, AuthRepository, JwtStrategy],

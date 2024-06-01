@@ -4,6 +4,7 @@ import { AuthModule } from './auth/auth.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
 import { MomentModule } from '@ccmos/nestjs-moment';
+import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
@@ -14,7 +15,8 @@ import { MomentModule } from '@ccmos/nestjs-moment';
       tz: 'Asia/Jakarta',
     }),
     AuthModule,
-    PrismaModule
+    PrismaModule,
+    MailModule
   ],
   controllers: [],
   providers: [],
