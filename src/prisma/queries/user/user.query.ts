@@ -64,7 +64,9 @@ export class UserQuery extends DbService {
                 id
             },
             data: {
-                isVerifiedEmail
+                isVerifiedEmail,
+                expiresCodeVerifyAt: null,
+                codeVerify: null
             }
         })
     }

@@ -32,6 +32,13 @@ export class AuthService {
     return await this.authRepository.changePassword(sub, dto.password, dto.newPassword);
   }
 
+  async getMe(token: string) {
+    const { sub } = await this.authRepository.decodeJwtToken(token);
+    const me = await this.authRepository.findUserByIdOrThrow(sub);
+    delete me.password;
+    return me
+  }
+
   /*
     |--------------------------------------------------------------------------
     | Auth admin function

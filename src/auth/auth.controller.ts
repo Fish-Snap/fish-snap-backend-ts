@@ -58,6 +58,15 @@ export class AuthController {
     return this.httpHelper.formatResponse(res, HttpStatus.OK, {})
   }
 
+  @Get('me')
+  @UseGuards(JwtGuard, RoleGuard)
+  @Roles(TypeRoleUser.USER)
+  @Access(TokenType.FULL)
+  async getMe(@Res() res, @Headers("authorization") authorization: string) {
+    const result = await this.authService.getMe(authorization);
+    return this.httpHelper.formatResponse(res, HttpStatus.OK, result)
+  }
+
   /*
     |--------------------------------------------------------------------------
     | Auth admin enpoint
