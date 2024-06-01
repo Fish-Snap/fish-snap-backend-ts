@@ -21,6 +21,8 @@ import { LoginUserDto } from './dto/login-user.dto';
 import { Request } from 'express'
 import { RegisterUserDto } from './dto/register-user.dto';
 import { VerifyEmailDto } from './dto/verify-email.dto';
+import { ChangePasswordDto } from './dto/change-password.dto';
+import { TypeRoleUser } from '@prisma/client';
 @Controller('auth')
 export class AuthController {
   constructor(
@@ -43,8 +45,17 @@ export class AuthController {
 
   @Post('login')
   async login(@Body() dto: LoginUserDto, @Res() res) {
-    const token = await this.authService.login(dto);
-    return this.httpHelper.formatResponse(res, HttpStatus.OK, token)
+    const result = await this.authService.login(dto);
+    return this.httpHelper.formatResponse(res, HttpStatus.OK, result)
+  }
+
+  @Post('change-password')
+  @UseGuards(JwtGuard, RoleGuard)
+  @Roles(TypeRoleUser.USER)
+  @Access(TokenType.FULL)
+  async changePassword(@Body() dto: ChangePasswordDto, @Res() res, @Headers("authorization") authorization: string) {
+    await this.authService.changePassword(authorization, dto);
+    return this.httpHelper.formatResponse(res, HttpStatus.OK, {})
   }
 
   /*

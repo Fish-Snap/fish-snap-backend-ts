@@ -68,4 +68,16 @@ export class UserQuery extends DbService {
             }
         })
     }
+
+    async changePassword(id: string, password: string, prismaTx?: PrismaClient) {
+        const prisma = prismaTx || this.prisma;
+        return await prisma.user.update({
+            where: {
+                id
+            },
+            data: {
+                password
+            }
+        })
+    }
 }

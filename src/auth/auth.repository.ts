@@ -124,7 +124,14 @@ export class AuthRepository {
         }
     }
 
-
+    async changePassword(id: string, password: string, newPassword: string) {
+        const user = await this.findUserByIdOrThrow(id);
+        const validPassword = await bcrypt.compare(password, user.password);
+        if (!validPassword) throw new BadRequestException('Password salah');
+        const salt = await bcrypt.genSalt();
+        const hash = await bcrypt.hash(newPassword, salt);
+        return await this.userQuery.changePassword(id, hash);
+    }
 
     /*
       |--------------------------------------------------------------------------
