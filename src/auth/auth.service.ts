@@ -14,6 +14,10 @@ export class AuthService {
     return await this.authRepository.register(dto);
   }
 
+  async verifyEmail(id: string, codeVerify: number) {
+    return await this.authRepository.verifyEmail(id, codeVerify);
+  }
+
   async login(dto: LoginUserDto) {
     return await this.authRepository.login(dto);
   }

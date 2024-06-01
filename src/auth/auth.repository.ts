@@ -67,13 +67,13 @@ export class AuthRepository {
                 await this.checkUserExist(dto.username, dto.email);
 
                 // Register the user
-                const registerUser = await this.userQuery.register(dto, tx); // Pass the transaction context
+                const registerUser = await this.userQuery.register(dto, tx);
                 if (!registerUser) {
                     throw new BadRequestException('User gagal ditambahkan');
                 }
 
                 // Send email verification
-                const verifyLink = `${process.env.API_URL}/verify/${registerUser.id}/${registerUser.codeVerify}`;
+                const verifyLink = `${process.env.API_URL}/auth/verify?idUser=${registerUser.id}&codeVerify=${registerUser.codeVerify}`;
                 const sendverifyEmailDto: SendVerifyEmailDto = {
                     email: dto.email,
                     username: dto.username,
@@ -84,6 +84,17 @@ export class AuthRepository {
         } catch (error) {
             throw error;
         }
+    }
+
+    async verifyEmail(id: string, codeVerify: number) {
+        const user = await this.findUserByIdOrThrow(id);
+        if (user.codeVerify !== codeVerify) {
+            throw new BadRequestException('Kode verifikasi salah');
+        }
+        if (user.expiresCodeVerifyAt < new Date()) {
+            throw new BadRequestException('Kode verifikasi sudah kadaluarsa');
+        }
+        return await this.userQuery.updateIsVerifiedEmail(id, true);
     }
 
 

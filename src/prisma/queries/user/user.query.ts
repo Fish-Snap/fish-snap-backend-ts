@@ -57,4 +57,15 @@ export class UserQuery extends DbService {
         });
     }
 
+    async updateIsVerifiedEmail(id: string, isVerifiedEmail: boolean, prismaTx?: PrismaClient) {
+        const prisma = prismaTx || this.prisma;
+        return await prisma.user.update({
+            where: {
+                id
+            },
+            data: {
+                isVerifiedEmail
+            }
+        })
+    }
 }
