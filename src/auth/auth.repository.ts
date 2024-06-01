@@ -9,6 +9,7 @@ import { LoginUserDto } from './dto/login-user.dto';
 import { UserQuery } from '../prisma/queries/user/user.query';
 import { TypeRoleUser } from '@prisma/client';
 import { RegisterUserDto } from './dto/register-user.dto';
+import { sendVerificationEmail } from '../helpers/email-helper';
 @Injectable()
 export class AuthRepository {
     constructor(
@@ -62,6 +63,16 @@ export class AuthRepository {
 
             const registerUser = await this.userQuery.register(dto)
             if (!registerUser) throw new BadRequestException('User gagal ditambahkan');
+
+            // Send email verif
+            const verifyLink = `${process.env.API_URL}/verify/${registerUser.id}/${registerUser.codeVerify}`
+            const message = `Click this link to verification your email: ${verifyLink}`
+            await sendVerificationEmail(
+                dto.email,
+                'FishSnap Email Verification',
+                message
+            )
+
             return await this.signJwtToken(
                 registerUser.id,
                 registerUser.role,

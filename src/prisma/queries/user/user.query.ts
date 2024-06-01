@@ -37,11 +37,19 @@ export class UserQuery extends DbService {
     }
 
     async register(payload: RegisterUserDto) {
+        // expireAt 1 day
+        const expireCodeVerify = new Date().getTime() + 1000 * 60 * 60 * 24
+        // ngirim email verifikasi
+        const min = 10000
+        const max = 99999
+        const codeVerify = Math.floor(Math.random() * (max - min + 1)) + min // Angka acak 5 digit
         return await this.prisma.user.create({
             data: {
                 username: payload.username,
                 email: payload.email,
-                password: payload.password
+                password: payload.password,
+                codeVerify: codeVerify,
+                expiresCodeVerifyAt: new Date(expireCodeVerify)
             }
         })
     }

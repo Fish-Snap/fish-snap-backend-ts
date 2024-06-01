@@ -59,14 +59,16 @@ model GlobalSetting {
 }
 
 model User {
-  id              String         @id @default(uuid())
-  username        String         @unique
-  email           String         @unique
-  password        String
-  profilePic      String?
-  role            TypeRoleUser   @default(USER)
-  isVerifiedEmail Boolean        @default(false)
-  status          TypeStatusUser @default(ACTIVE)
+  id                  String         @id @default(uuid())
+  username            String         @unique
+  email               String         @unique
+  password            String
+  profilePic          String?
+  role                TypeRoleUser   @default(USER)
+  isVerifiedEmail     Boolean        @default(false)
+  codeVerify          Int
+  expiresCodeVerifyAt DateTime?
+  status              TypeStatusUser @default(ACTIVE)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
