@@ -4,11 +4,14 @@ import { AuthRepository } from './auth.repository';
 import { LoginUserDto } from './dto/login-user.dto';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { ChangePasswordDto } from './dto/change-password.dto';
+import { PayloadToken } from './type';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly authRepository: AuthRepository
+    private readonly authRepository: AuthRepository,
+    private jwt: JwtService,
   ) { }
 
   async register(dto: RegisterUserDto) {
@@ -41,9 +44,14 @@ export class AuthService {
 
   /*
     |--------------------------------------------------------------------------
-    | Auth admin function
+    | Helper Auth
     |--------------------------------------------------------------------------
     */
-
+  async decodeJwtToken(accessToken: string) {
+    const decodedJwt = this.jwt.decode(
+      accessToken.split(' ')[1],
+    ) as PayloadToken;
+    return decodedJwt;
+  }
 
 }
