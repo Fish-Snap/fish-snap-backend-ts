@@ -10,9 +10,15 @@ import {
     Delete,
     Query,
     UseGuards,
+    UseInterceptors,
+    UploadedFile,
 } from '@nestjs/common';
 import { FishService } from './fish.service';
 import { HttpHelper } from '../helpers/http-helper';
+import { JwtGuard, RoleGuard } from '../auth/guard';
+import { Roles } from '../auth/decorator';
+import { TypeRoleUser } from '@prisma/client';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 
 @Controller('fish')
@@ -22,4 +28,12 @@ export class FishController {
         private readonly httpHelper: HttpHelper,
     ) { }
 
+    @Post()
+    @UseGuards(JwtGuard, RoleGuard)
+    @Roles(TypeRoleUser.USER)
+    @UseInterceptors(FileInterceptor('file'))
+    async createFishScanHistory(@Res() res, @UploadedFile() file: Express.Multer.File) {
+        const result = await this.fishService.createFishHistory(file);
+        return this.httpHelper.formatResponse(res, HttpStatus.CREATED, result);
+    }
 }

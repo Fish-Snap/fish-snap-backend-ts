@@ -5,6 +5,8 @@ import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
 import { MomentModule } from '@ccmos/nestjs-moment';
 import { MailModule } from './mail/mail.module';
+import { FishModule } from './fish/fish.module';
+import { GatewayModule } from './gateway/gateway.module';
 
 @Module({
   imports: [
@@ -16,7 +18,9 @@ import { MailModule } from './mail/mail.module';
     }),
     AuthModule,
     PrismaModule,
-    MailModule
+    MailModule,
+    FishModule,
+    GatewayModule
   ],
   controllers: [],
   providers: [],
