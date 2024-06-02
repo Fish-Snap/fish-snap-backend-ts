@@ -9,6 +9,11 @@ export enum TokenType {
   BRANCH = 'BRANCH',
   OTP = 'OTP',
 }
+
+export enum FolderBucketType {
+  FISH = 'FISH',
+  USER_PROFILE = 'USER_PROFILE',
+}
 export const _validateFile = (
   name: string,
   file: Express.Multer.File,

@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { FishHistoryQuery } from '../prisma/queries/fish-history/fish-history.query';
 import { GatewayStorageBucketRepository } from '../gateway/repository/gateway-storage-bucket.repository';
 import { GatewayService } from '../gateway/gateway.service';
-import { _validateFile, getCustomFilename } from '../helpers/helper';
+import { FolderBucketType, _validateFile, getCustomFilename } from '../helpers/helper';
 
 
 @Injectable()
@@ -28,7 +28,7 @@ export class FishRepository {
             `fish-${Date.now()}-${Math.round(Math.random() * 1e9)}`,
             file,
         );
-        urlFileFoto = await this.gatewayService.uploadFile(file, remoteFileName);
+        urlFileFoto = await this.gatewayService.uploadFile(file, remoteFileName, FolderBucketType.FISH);
         return urlFileFoto
 
     }
