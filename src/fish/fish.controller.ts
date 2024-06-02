@@ -28,12 +28,12 @@ export class FishController {
         private readonly httpHelper: HttpHelper,
     ) { }
 
-    @Post()
+    @Post("scan")
     @UseGuards(JwtGuard, RoleGuard)
     @Roles(TypeRoleUser.USER)
     @UseInterceptors(FileInterceptor('file'))
     async createFishScanHistory(@Res() res, @UploadedFile() file: Express.Multer.File) {
         const result = await this.fishService.createFishHistory(file);
-        return this.httpHelper.formatResponse(res, HttpStatus.CREATED, result);
+        return this.httpHelper.formatResponse(res, HttpStatus.OK, result);
     }
 }

@@ -143,17 +143,18 @@ model FishModel {
 }
 
 model FishScanHistory {
-  id            String   @id @default(uuid())
-  idFishModel   Int
-  codeFishModel String
-  name          String
-  urlImg        String
-  otherNames    String[] @default([])
-  description   String[]
-  productRecipe Json[]   @default([])
+  id             String   @id @default(uuid())
+  codeFishModel  String
+  name           String
+  scientificName String
+  urlImg         String
+  otherNames     String[] @default([])
+  description    String[]
+  productRecipe  Json[]   @default([])
+  location       Json[]   @default([])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@index([id, idFishModel, codeFishModel])
+  @@index([id, codeFishModel])
 }

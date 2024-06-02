@@ -10,6 +10,7 @@ import { FishHistoryQuery } from '../prisma/queries/fish-history/fish-history.qu
 import { FishController } from './fish.controller';
 import { AuthModule } from '../auth/auth.module';
 import { GatewayModule } from '../gateway/gateway.module';
+import { FishModelQuery } from '../prisma/queries/fish-model/fish-model.query';
 
 @Module({
     imports: [
@@ -21,7 +22,7 @@ import { GatewayModule } from '../gateway/gateway.module';
         AuthModule,
         GatewayModule
     ],
-    providers: [FishService, FishRepository, FishHistoryQuery],
+    providers: [FishService, FishRepository, FishHistoryQuery, FishModelQuery],
     controllers: [FishController],
     exports: [FishService, FishRepository],
 })

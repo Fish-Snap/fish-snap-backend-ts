@@ -4,6 +4,7 @@ import { PrismaModule } from '../prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
 import { GatewayStorageBucketRepository } from "./repository/gateway-storage-bucket.repository";
 import { HelperModule } from "../helpers/helper.module";
+import { GatewayMlRepository } from "./repository/gateway-ml.repository";
 
 @Module({
     imports: [
@@ -14,6 +15,7 @@ import { HelperModule } from "../helpers/helper.module";
     providers: [
         GatewayService,
         GatewayStorageBucketRepository,
+        GatewayMlRepository
     ],
     controllers: [],
     exports: [
