@@ -64,4 +64,49 @@ export class NewsQuery extends DbService {
             }
         })
     }
+
+
+    /*
+      |--------------------------------------------------------------------------
+      | Category News query
+      |--------------------------------------------------------------------------
+    */
+
+    async findCategoryNewsById(id: string) {
+        return await this.prisma.categoryNews.findUnique({
+            where: {
+                id
+            }
+        })
+    }
+
+    async findAllCategoryNews() {
+        return await this.prisma.categoryNews.findMany();
+    }
+
+    async createCategoryNews(payload: Prisma.CategoryNewsCreateInput, prismaTx?: PrismaClient) {
+        const prisma = prismaTx || this.prisma;
+        return await prisma.categoryNews.create({
+            data: payload
+        })
+    }
+
+    async updateCategoryNews(id: string, payload: Prisma.CategoryNewsUpdateInput, prismaTx?: PrismaClient) {
+        const prisma = prismaTx || this.prisma;
+        return await prisma.categoryNews.update({
+            where: {
+                id
+            },
+            data: payload
+        })
+    }
+
+    async deleteCategoryNews(id: string, prismaTx?: PrismaClient) {
+        const prisma = prismaTx || this.prisma;
+        return await prisma.categoryNews.delete({
+            where: {
+                id
+            }
+        })
+    }
 }

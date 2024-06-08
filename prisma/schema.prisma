@@ -60,6 +60,7 @@ model GlobalSetting {
 
 model User {
   id                  String         @id @default(uuid())
+  name                String
   username            String         @unique
   email               String         @unique
   password            String
@@ -80,6 +81,7 @@ model User {
 
 model UserAdmin {
   id         String         @id @default(uuid())
+  name       String
   username   String         @unique
   email      String         @unique
   password   String
@@ -112,7 +114,7 @@ model News {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@index([id])
+  @@index([id, idCategoryNews])
 }
 
 model CategoryNews {
@@ -123,7 +125,7 @@ model CategoryNews {
   updatedAt DateTime @updatedAt
   news      News[]
 
-  @@index([id])
+  @@index([id, name, tags])
 }
 
 model FishModel {
