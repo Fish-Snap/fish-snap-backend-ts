@@ -12,6 +12,7 @@ import {
     UseGuards,
     UseInterceptors,
     UploadedFile,
+    Headers,
 } from '@nestjs/common';
 import { FishService } from './fish.service';
 import { HttpHelper } from '../helpers/http-helper';
@@ -32,8 +33,11 @@ export class FishController {
     @UseGuards(JwtGuard, RoleGuard)
     @Roles(TypeRoleUser.USER)
     @UseInterceptors(FileInterceptor('file'))
-    async createFishScanHistory(@Res() res, @UploadedFile() file: Express.Multer.File) {
-        const result = await this.fishService.createFishHistory(file);
+    async createFishScanHistory(
+        @Headers("authorization") authorization: string,
+        @Res() res,
+        @UploadedFile() file: Express.Multer.File) {
+        const result = await this.fishService.createFishHistory(authorization, file);
         return this.httpHelper.formatResponse(res, HttpStatus.OK, result);
     }
 }

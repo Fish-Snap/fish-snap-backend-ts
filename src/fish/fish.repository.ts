@@ -18,7 +18,7 @@ export class FishRepository {
         private readonly prisma: PrismaService
     ) { }
 
-    async createFishHistory(file: Express.Multer.File) {
+    async createFishHistory(idUser: string, file: Express.Multer.File) {
         if (!file) throw new BadRequestException('Please upload file');
         _validateFile(
             `Foto Ikan`,
@@ -42,6 +42,7 @@ export class FishRepository {
                 );
                 urlFileFoto = await this.gatewayService.uploadFile(file, remoteFileName, FolderBucketType.FISH);
                 const payload: IFishHistory = {
+                    idUser: idUser,
                     urlImg: urlFileFoto,
                     codeFishModel: fishModel.code,
                     name: fishModel.name,

@@ -9,7 +9,8 @@ export class FishService {
         private readonly authService: AuthService
     ) { }
 
-    async createFishHistory(file: Express.Multer.File) {
-        return await this.FishRepository.createFishHistory(file)
+    async createFishHistory(token: string, file: Express.Multer.File) {
+        const { sub } = await this.authService.decodeJwtToken(token)
+        return await this.FishRepository.createFishHistory(sub, file)
     }
 }
