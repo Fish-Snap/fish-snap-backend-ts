@@ -7,6 +7,7 @@ import { MomentModule } from '@ccmos/nestjs-moment';
 import { MailModule } from './mail/mail.module';
 import { FishModule } from './fish/fish.module';
 import { GatewayModule } from './gateway/gateway.module';
+import { NewsModule } from './news/news.module';
 
 @Module({
   imports: [
@@ -20,7 +21,8 @@ import { GatewayModule } from './gateway/gateway.module';
     PrismaModule,
     MailModule,
     FishModule,
-    GatewayModule
+    GatewayModule,
+    NewsModule
   ],
   controllers: [],
   providers: [],
