@@ -1,62 +1,56 @@
-# Use the official Node.js image as the base
-FROM node:20 as base
+# base node image
+FROM node:16.19.0-alpine3.16 as base
 
-# Set environment variable
+# set for base and all layer that inherit from it
 ENV NODE_ENV production
 
-# Install Yarn globally
-RUN corepack enable
-
-# Install Nest CLI globally
-RUN npm install -g @nestjs/cli
-
-# Install all dependencies, including dev dependencies
+# Install all node_modules, including dev dependencies
 FROM base as deps
 
 WORKDIR /usr/src/app
 
-COPY package.json yarn.lock ./
-RUN yarn install
+COPY package.json ./
+RUN yarn
 
-# Setup production dependencies
+# Setup production node_modules
 FROM base as production-deps
 
 WORKDIR /usr/src/app
 
-COPY package.json yarn.lock ./
-RUN yarn install --production
+COPY package.json ./
+RUN yarn --production
 
 # Build the app
 FROM base as build
 
 WORKDIR /usr/src/app
 
-COPY --from=deps /usr/src/app/node_modules ./node_modules
+COPY --from=deps /usr/src/app/node_modules /usr/src/app/node_modules
 
 COPY prisma ./prisma/
-COPY . .
 
+COPY . .
 RUN yarn prisma generate
 RUN yarn build
 
-# Finally, create the production image with minimal footprint
-FROM node:20
+# Finally, build the production image with minimal footprint
+FROM base
 
 ENV PORT=3000
 ENV NODE_ENV=production
 
 WORKDIR /usr/src/app
 
-COPY --from=production-deps /usr/src/app/node_modules ./node_modules
-COPY --from=build /usr/src/app/node_modules/.prisma ./node_modules/.prisma
+COPY --from=production-deps /usr/src/app/node_modules /usr/src/app/node_modules
+COPY --from=build /usr/src/app/node_modules/.prisma /usr/src/app/node_modules/.prisma
 
-COPY --from=build /usr/src/app/dist ./dist
-COPY --from=build /usr/src/app/utils ./utils
-COPY --from=build /usr/src/app/package.json ./package.json
-COPY --from=build /usr/src/app/prisma ./prisma
-COPY --from=build /usr/src/app/entrypoint.production.sh ./entrypoint.production.sh
+COPY --from=build /usr/src/app/dist /usr/src/app/dist
+COPY --from=build /usr/src/app/utils /usr/src/app/utils
+COPY --from=build /usr/src/app/package.json /usr/src/app/package.json
+COPY --from=build /usr/src/app/prisma /usr/src/app/prisma
+COPY --from=build /usr/src/app/entrypoint.production.sh /usr/src/app/entrypoint.production.sh
 
-RUN sed -i 's/\r//' ./entrypoint.production.sh
-RUN chmod +x ./entrypoint.production.sh
+RUN sed -i 's/\r//' /usr/src/app/entrypoint.production.sh
+RUN chmod +x /usr/src/app/entrypoint.production.sh
 
 ENTRYPOINT [ "./entrypoint.production.sh" ]
