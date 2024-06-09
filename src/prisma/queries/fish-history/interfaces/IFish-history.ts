@@ -4,6 +4,7 @@ export interface IFishHistory {
     name: string;
     scientificName: string;
     urlImg: string;
+    confidence: number;
     otherNames: string[];
     description: string[];
     productRecipe: ProductRecipe[];

@@ -47,6 +47,7 @@ export class FishRepository {
                     codeFishModel: fishModel.code,
                     name: fishModel.name,
                     scientificName: fishModel.scientificName,
+                    confidence: fishPredict.confidence,
                     otherNames: fishModel.otherNames,
                     description: fishModel.description,
                     location: fishModel.location as any,

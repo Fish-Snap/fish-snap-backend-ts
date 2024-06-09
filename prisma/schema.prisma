@@ -152,6 +152,7 @@ model FishScanHistory {
   codeFishModel  String
   name           String
   scientificName String
+  confidence     Float
   urlImg         String
   otherNames     String[] @default([])
   description    String[]
