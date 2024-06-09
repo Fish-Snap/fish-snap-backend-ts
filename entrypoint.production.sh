@@ -9,5 +9,5 @@ yarn prisma generate
 echo "Migration Database"
 yarn prisma migrate deploy
 
-echo "Start Server Dev"
-yarn start:dev
+echo "Start Server Prod"
+yarn start:prod
