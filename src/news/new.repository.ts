@@ -4,6 +4,8 @@ import { CreateNewsDto, UpdateNewsDto } from './dto/create-news.dto';
 import { UserQuery } from '../prisma/queries/user/user.query';
 import { TypeNews } from '@prisma/client';
 import { CreateCategoryNewsDto, UpdateCategoryNewsDto } from './dto/create-category-news.dto';
+import { RangeDateDto } from '../helpers/dto/range-date.dto';
+import { checkDateRange } from '../helpers/helper';
 
 
 @Injectable()
@@ -30,7 +32,11 @@ export class NewsRepository {
         return await this.newsQuery.findAll();
     }
 
-    async findNewsByRangeDate({ startDate, endDate }: { startDate: Date, endDate: Date }) {
+    async findNewsByRangeDate(dto: RangeDateDto) {
+        // count days between two dates
+        const startDate = new Date(dto.startDate);
+        const endDate = new Date(dto.endDate);
+        checkDateRange(startDate, endDate, 31);
         return await this.newsQuery.findByRangeDate({ startDate, endDate });
     }
 

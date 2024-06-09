@@ -3,6 +3,7 @@ import { createWriteStream, mkdirSync, unlink } from 'fs';
 import { Readable } from 'stream';
 import * as path from 'path';
 import { extname } from 'path';
+import moment from "moment";
 
 export enum TokenType {
   FULL = 'FULL',
@@ -86,3 +87,12 @@ export const deleteFileImageHelper = async (deletePath, fileName) => {
     return
   }
 };
+
+export const checkDateRange = (startDate: Date, endDate: Date, range: number) => {
+  // count days between two dates
+  const start = moment(startDate);
+  const end = moment(endDate);
+  const countDays = end.diff(start, 'days');
+  if (countDays > range) throw new BadRequestException(`Filter tanggal tidak boleh melebihi ${range} hari`)
+  return true
+}

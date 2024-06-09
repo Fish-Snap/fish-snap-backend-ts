@@ -3,6 +3,7 @@ import { AuthService } from '../auth/auth.service';
 import { NewsRepository } from './new.repository';
 import { CreateNewsDto, UpdateNewsDto } from './dto/create-news.dto';
 import { CreateCategoryNewsDto, UpdateCategoryNewsDto } from './dto/create-category-news.dto';
+import { RangeDateDto } from '../helpers/dto/range-date.dto';
 
 
 @Injectable()
@@ -22,8 +23,8 @@ export class NewsService {
         return await this.newsRepository.findNewsByIdOrThrow(id);
     }
 
-    async findNewsByRangeDate({ startDate, endDate }: { startDate: Date, endDate: Date }) {
-        return await this.newsRepository.findNewsByRangeDate({ startDate, endDate });
+    async findNewsByRangeDate(dto: RangeDateDto) {
+        return await this.newsRepository.findNewsByRangeDate(dto);
     }
 
     async findNewsByCurrentDay() {
