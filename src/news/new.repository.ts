@@ -5,7 +5,7 @@ import { UserQuery } from '../prisma/queries/user/user.query';
 import { TypeNews } from '@prisma/client';
 import { CreateCategoryNewsDto, UpdateCategoryNewsDto } from './dto/create-category-news.dto';
 import { RangeDateDto } from '../helpers/dto/range-date.dto';
-import { checkDateRange } from '../helpers/helper';
+import { checkDateRange, isValidDateStringUsingTzTime } from '../helpers/helper';
 
 
 @Injectable()
@@ -33,6 +33,12 @@ export class NewsRepository {
     }
 
     async findNewsByRangeDate(dto: RangeDateDto) {
+        if (
+            !isValidDateStringUsingTzTime(dto.startDate) ||
+            !isValidDateStringUsingTzTime(dto.endDate)
+        ) {
+            throw new BadRequestException('Invalid date. Please add timezone');
+        }
         // count days between two dates
         const startDate = new Date(dto.startDate);
         const endDate = new Date(dto.endDate);

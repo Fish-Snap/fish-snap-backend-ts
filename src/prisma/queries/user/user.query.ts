@@ -49,6 +49,7 @@ export class UserQuery extends DbService {
         return await prisma.user.create({
             data: {
                 username: payload.username,
+                name: payload.name,
                 email: payload.email,
                 password: payload.password,
                 codeVerify: codeVerify,

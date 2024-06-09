@@ -96,3 +96,11 @@ export const checkDateRange = (startDate: Date, endDate: Date, range: number) =>
   if (countDays > range) throw new BadRequestException(`Filter tanggal tidak boleh melebihi ${range} hari`)
   return true
 }
+
+// 2024-01-01T00:00:00+08:00 --> true
+export const isValidDateStringUsingTzTime = (date: string): boolean => {
+  const splittedPlus = date.split('T')[1].split('+');
+  const splittedMins = date.split('T')[1].split('-');
+
+  return splittedPlus.length === 2 || splittedMins.length === 2;
+};
