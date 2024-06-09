@@ -17,4 +17,12 @@ export class FishHistoryQuery extends DbService {
             data: payloadConvert
         });
     }
+
+    async findManyByIdUser(id: string) {
+        return await this.prisma.fishScanHistory.findMany({
+            where: {
+                idUser: id
+            }
+        })
+    }
 }

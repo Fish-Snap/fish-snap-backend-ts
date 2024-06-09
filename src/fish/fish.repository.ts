@@ -59,4 +59,8 @@ export class FishRepository {
             throw error;
         }
     }
+
+    async findManyFishHistoryByIdUser(idUser: string) {
+        return await this.fishHistoryQuery.findManyByIdUser(idUser);
+    }
 }

@@ -13,4 +13,9 @@ export class FishService {
         const { sub } = await this.authService.decodeJwtToken(token)
         return await this.fishRepository.createFishHistory(sub, file)
     }
+
+    async findManyFishHistoryByIdUser(token: string) {
+        const { sub } = await this.authService.decodeJwtToken(token)
+        return await this.fishRepository.findManyFishHistoryByIdUser(sub)
+    }
 }

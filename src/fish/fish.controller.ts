@@ -40,4 +40,15 @@ export class FishController {
         const result = await this.fishService.createFishHistory(authorization, file);
         return this.httpHelper.formatResponse(res, HttpStatus.OK, result);
     }
+
+    @Get("history")
+    @UseGuards(JwtGuard, RoleGuard)
+    @Roles(TypeRoleUser.USER)
+    async getNewsCurrentDay(
+        @Headers("authorization") authorization: string,
+        @Res() res
+    ) {
+        const result = await this.fishService.findManyFishHistoryByIdUser(authorization)
+        return this.httpHelper.formatResponse(res, HttpStatus.OK, result)
+    }
 }
