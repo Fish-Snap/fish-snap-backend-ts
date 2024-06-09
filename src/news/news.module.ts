@@ -7,6 +7,7 @@ import { HelperModule } from '../helpers/helper.module';
 import { NewsService } from './news.service';
 import { NewsRepository } from './new.repository';
 import { NewsController } from './news.controller';
+import { AuthModule } from '../auth/auth.module';
 
 
 @Module({
@@ -16,6 +17,7 @@ import { NewsController } from './news.controller';
         MomentModule,
         ConfigModule,
         HelperModule,
+        AuthModule,
     ],
     providers: [NewsService, NewsRepository],
     controllers: [NewsController],
