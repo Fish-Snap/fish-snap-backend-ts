@@ -2,12 +2,25 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 
 import { AuthRepository } from './auth.repository';
 import { LoginUserDto } from './dto/login-user.dto';
+import { RegisterUserDto } from './dto/register-user.dto';
+import { ChangePasswordDto } from './dto/change-password.dto';
+import { PayloadToken } from './type';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly authRepository: AuthRepository
+    private readonly authRepository: AuthRepository,
+    private jwt: JwtService,
   ) { }
+
+  async register(dto: RegisterUserDto) {
+    return await this.authRepository.register(dto);
+  }
+
+  async verifyEmail(id: string, codeVerify: number) {
+    return await this.authRepository.verifyEmail(id, codeVerify);
+  }
 
   async login(dto: LoginUserDto) {
     return await this.authRepository.login(dto);
@@ -17,16 +30,43 @@ export class AuthService {
     return await this.authRepository.refreshJwtToken(refreshToken);
   }
 
-  async updateForgotPassword(token: string, password: string) {
-    if (!password) throw new BadRequestException('newPassword tidak boleh kosong');
-    return await this.authRepository.updateForgotPassword(token, password);
+  async changePassword(token: string, dto: ChangePasswordDto) {
+    const { sub } = await this.authRepository.decodeJwtToken(token);
+    return await this.authRepository.changePassword(sub, dto.password, dto.newPassword);
+  }
+
+  async getMe(token: string) {
+    const { sub } = await this.authRepository.decodeJwtToken(token);
+    const me = await this.authRepository.findUserByIdOrThrow(sub);
+    delete me.password;
+    return me
+  }
+
+  /*
+  |--------------------------------------------------------------------------
+  | Admin Service
+  |--------------------------------------------------------------------------
+  */
+
+  async registerAdmin(dto: RegisterUserDto) {
+    return await this.authRepository.registerAdmin(dto);
+  }
+
+
+  async loginAdmin(dto: LoginUserDto) {
+    return await this.authRepository.loginAdmin(dto);
   }
 
   /*
     |--------------------------------------------------------------------------
-    | Auth admin function
+    | Helper Auth
     |--------------------------------------------------------------------------
     */
-
+  async decodeJwtToken(accessToken: string) {
+    const decodedJwt = this.jwt.decode(
+      accessToken.split(' ')[1],
+    ) as PayloadToken;
+    return decodedJwt;
+  }
 
 }

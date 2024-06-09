@@ -2,9 +2,28 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { LoggerMiddleware } from './middleware/logger.middleware';
 import { AuthModule } from './auth/auth.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { ConfigModule } from '@nestjs/config';
+import { MomentModule } from '@ccmos/nestjs-moment';
+import { MailModule } from './mail/mail.module';
+import { FishModule } from './fish/fish.module';
+import { GatewayModule } from './gateway/gateway.module';
+import { NewsModule } from './news/news.module';
 
 @Module({
-  imports: [AuthModule, PrismaModule],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true
+    }),
+    MomentModule.forRoot({
+      tz: 'Asia/Jakarta',
+    }),
+    AuthModule,
+    PrismaModule,
+    MailModule,
+    FishModule,
+    GatewayModule,
+    NewsModule
+  ],
   controllers: [],
   providers: [],
 })

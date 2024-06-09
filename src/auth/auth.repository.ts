@@ -5,15 +5,18 @@ import * as bcrypt from 'bcrypt';
 import { PayloadToken } from './type';
 import { TokenType } from '../helpers/helper';
 import { PrismaService } from '../prisma/prisma.service';
-import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import { UserQuery } from '../prisma/queries/user/user.query';
-import { TypeRoleUser } from '@prisma/client';
+import { PrismaClient, TypeRoleAdmin, TypeRoleUser } from '@prisma/client';
+import { RegisterUserDto } from './dto/register-user.dto';
+import { MailService } from '../mail/mail.service';
+import { SendVerifyEmailDto } from '../mail/dto/send-verify-email.dto';
 @Injectable()
 export class AuthRepository {
     constructor(
         private prisma: PrismaService,
         private jwt: JwtService,
+        private mailService: MailService,
         private config: ConfigService,
         private readonly userQuery: UserQuery
     ) { }
@@ -50,9 +53,68 @@ export class AuthRepository {
       | Auth user function
       |--------------------------------------------------------------------------
       */
+    async register(dto: RegisterUserDto) {
+        if (dto.username) {
+            dto.username = dto.username.toLowerCase().trim();
+        }
+        if (dto.email) {
+            dto.email = dto.email.toLowerCase().trim();
+        }
+        // hashing password from body dto
+        const salt = await bcrypt.genSalt();
+        const hash = await bcrypt.hash(dto.password, salt);
+        dto.password = hash;
+
+        try {
+            // Start a transaction
+            await this.prisma.$transaction(async (tx: PrismaClient) => {
+                // Check if user exists
+                await this.checkUserExist(dto.username, dto.email);
+
+                // Register the user
+                const registerUser = await this.userQuery.register(dto, tx);
+                if (!registerUser) {
+                    throw new BadRequestException('User gagal ditambahkan');
+                }
+
+                // Send email verification
+                const verifyLink = `${process.env.API_URL}/auth/verify?idUser=${registerUser.id}&codeVerify=${registerUser.codeVerify}`;
+                const sendverifyEmailDto: SendVerifyEmailDto = {
+                    email: dto.email,
+                    username: dto.username,
+                    verificationLink: verifyLink,
+                };
+                await this.mailService.sendEmailVerify(sendverifyEmailDto)
+            });
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async verifyEmail(id: string, codeVerify: number) {
+        const user = await this.findUserByIdOrThrow(id);
+        if (user.codeVerify !== codeVerify) {
+            throw new BadRequestException('Kode verifikasi salah');
+        }
+        if (user.expiresCodeVerifyAt < new Date()) {
+            throw new BadRequestException('Kode verifikasi sudah kadaluarsa');
+        }
+        return await this.userQuery.updateIsVerifiedEmail(id, true);
+    }
+
+
     async login(dto: LoginUserDto) {
         try {
+            if (dto.username) {
+                dto.username = dto.username.toLowerCase().trim();
+            }
+            if (dto.email) {
+                dto.email = dto.email.toLowerCase().trim();
+            }
             const user = await this.findUserByUsernameOrEmailOrThrow(dto.username || dto.email);
+            if (!user.isVerifiedEmail) {
+                throw new BadRequestException('Verifikasi email terlebih dahulu');
+            }
 
             const validPassword = await bcrypt.compare(dto.password, user.password);
 
@@ -62,7 +124,7 @@ export class AuthRepository {
 
             return await this.signJwtToken(
                 user.id,
-                TypeRoleUser.USER,
+                user.role,
                 TokenType.FULL,
                 '7d',
             );
@@ -71,22 +133,76 @@ export class AuthRepository {
         }
     }
 
-    async updateForgotPassword(token: string, password: string) {
-        const { sub } = await this.decodeJwtToken(token);
+    async changePassword(id: string, password: string, newPassword: string) {
+        const user = await this.findUserByIdOrThrow(id);
+        const validPassword = await bcrypt.compare(password, user.password);
+        if (!validPassword) throw new BadRequestException('Password salah');
         const salt = await bcrypt.genSalt();
-        const hash = await bcrypt.hash(password, salt);
-        const user = await this.userQuery.update(sub, { password: hash });
-        if (!user) throw new BadRequestException('User gagal diubah');
-
-        return user;
+        const hash = await bcrypt.hash(newPassword, salt);
+        return await this.userQuery.changePassword(id, hash);
     }
-
 
     /*
       |--------------------------------------------------------------------------
       | Auth admin function
       |--------------------------------------------------------------------------
       */
+
+    async registerAdmin(dto: RegisterUserDto) {
+        if (dto.username) {
+            dto.username = dto.username.toLowerCase().trim();
+        }
+        if (dto.email) {
+            dto.email = dto.email.toLowerCase().trim();
+        }
+        const user = await this.userQuery.findAdminByEmailOrUsername(dto.username || dto.email);
+
+        if (user) {
+            throw new BadRequestException('User sudah terdaftar');
+        }
+        // hashing password from body dto
+        const salt = await bcrypt.genSalt();
+        const hash = await bcrypt.hash(dto.password, salt);
+        dto.password = hash;
+
+        const createdAdmin = await this.userQuery.registerAdmin(dto);
+        if (!createdAdmin) {
+            throw new BadRequestException('Admin gagal ditambahkan');
+        }
+        return createdAdmin;
+
+    }
+
+    async loginAdmin(dto: LoginUserDto) {
+        try {
+            if (dto.username) {
+                dto.username = dto.username.toLowerCase().trim();
+            }
+            if (dto.email) {
+                dto.email = dto.email.toLowerCase().trim();
+            }
+            const user = await this.userQuery.findAdminByEmailOrUsername(dto.username || dto.email);
+
+            if (!user) {
+                throw new BadRequestException('User tidak ditemukan');
+            }
+
+            const validPassword = await bcrypt.compare(dto.password, user.password);
+
+            if (!validPassword) {
+                throw new BadRequestException('Password salah');
+            }
+
+            return await this.signJwtToken(
+                user.id,
+                user.role,
+                TokenType.FULL,
+                '7d',
+            );
+        } catch (error) {
+            throw error;
+        }
+    }
 
     /*
       |--------------------------------------------------------------------------
@@ -96,7 +212,7 @@ export class AuthRepository {
 
     private async signJwtToken(
         idUser: string,
-        role: TypeRoleUser,
+        role: string,
         access: string,
         expire: string,
     ): Promise<{ access_token: string }> {
