@@ -54,7 +54,12 @@ export class AuthRepository {
       |--------------------------------------------------------------------------
       */
     async register(dto: RegisterUserDto) {
-        dto.username = dto.username.toLowerCase().trim();
+        if (dto.username) {
+            dto.username = dto.username.toLowerCase().trim();
+        }
+        if (dto.email) {
+            dto.email = dto.email.toLowerCase().trim();
+        }
         // hashing password from body dto
         const salt = await bcrypt.genSalt();
         const hash = await bcrypt.hash(dto.password, salt);
@@ -100,8 +105,12 @@ export class AuthRepository {
 
     async login(dto: LoginUserDto) {
         try {
-            dto.username = dto.username.toLowerCase().trim();
-            dto.email = dto.email.toLowerCase().trim();
+            if (dto.username) {
+                dto.username = dto.username.toLowerCase().trim();
+            }
+            if (dto.email) {
+                dto.email = dto.email.toLowerCase().trim();
+            }
             const user = await this.findUserByUsernameOrEmailOrThrow(dto.username || dto.email);
             if (!user.isVerifiedEmail) {
                 throw new BadRequestException('Verifikasi email terlebih dahulu');
@@ -140,7 +149,17 @@ export class AuthRepository {
       */
 
     async registerAdmin(dto: RegisterUserDto) {
-        dto.username = dto.username.toLowerCase().trim();
+        if (dto.username) {
+            dto.username = dto.username.toLowerCase().trim();
+        }
+        if (dto.email) {
+            dto.email = dto.email.toLowerCase().trim();
+        }
+        const user = await this.userQuery.findAdminByEmailOrUsername(dto.username || dto.email);
+
+        if (user) {
+            throw new BadRequestException('User sudah terdaftar');
+        }
         // hashing password from body dto
         const salt = await bcrypt.genSalt();
         const hash = await bcrypt.hash(dto.password, salt);
@@ -156,8 +175,12 @@ export class AuthRepository {
 
     async loginAdmin(dto: LoginUserDto) {
         try {
-            dto.username = dto.username.toLowerCase().trim();
-            dto.email = dto.email.toLowerCase().trim();
+            if (dto.username) {
+                dto.username = dto.username.toLowerCase().trim();
+            }
+            if (dto.email) {
+                dto.email = dto.email.toLowerCase().trim();
+            }
             const user = await this.userQuery.findAdminByEmailOrUsername(dto.username || dto.email);
 
             if (!user) {
