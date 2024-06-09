@@ -1,56 +1,56 @@
-# base node image
-FROM node:20
+# Use the official Node.js image as the base
+FROM node:20 as base
 
-# set for base and all layer that inherit from it
+# Set environment variable
 ENV NODE_ENV production
 
-# Install all node_modules, including dev dependencies
+# Install all dependencies, including dev dependencies
 FROM base as deps
 
 WORKDIR /usr/src/app
 
-COPY package.json ./
-RUN yarn
+COPY package.json yarn.lock ./
+RUN yarn install
 
-# Setup production node_modules
+# Setup production dependencies
 FROM base as production-deps
 
 WORKDIR /usr/src/app
 
-COPY package.json ./
-RUN yarn --production
+COPY package.json yarn.lock ./
+RUN yarn install --production
 
 # Build the app
 FROM base as build
 
 WORKDIR /usr/src/app
 
-COPY --from=deps /usr/src/app/node_modules /usr/src/app/node_modules
+COPY --from=deps /usr/src/app/node_modules ./node_modules
 
 COPY prisma ./prisma/
-
 COPY . .
+
 RUN yarn prisma generate
 RUN yarn build
 
-# Finally, build the production image with minimal footprint
-FROM base
+# Finally, create the production image with minimal footprint
+FROM node:20
 
 ENV PORT=3000
 ENV NODE_ENV=production
 
 WORKDIR /usr/src/app
 
-COPY --from=production-deps /usr/src/app/node_modules /usr/src/app/node_modules
-COPY --from=build /usr/src/app/node_modules/.prisma /usr/src/app/node_modules/.prisma
+COPY --from=production-deps /usr/src/app/node_modules ./node_modules
+COPY --from=build /usr/src/app/node_modules/.prisma ./node_modules/.prisma
 
-COPY --from=build /usr/src/app/dist /usr/src/app/dist
-COPY --from=build /usr/src/app/utils /usr/src/app/utils
-COPY --from=build /usr/src/app/package.json /usr/src/app/package.json
-COPY --from=build /usr/src/app/prisma /usr/src/app/prisma
-COPY --from=build /usr/src/app/entrypoint.production.sh /usr/src/app/entrypoint.production.sh
+COPY --from=build /usr/src/app/dist ./dist
+COPY --from=build /usr/src/app/utils ./utils
+COPY --from=build /usr/src/app/package.json ./package.json
+COPY --from=build /usr/src/app/prisma ./prisma
+COPY --from=build /usr/src/app/entrypoint.production.sh ./entrypoint.production.sh
 
-RUN sed -i 's/\r//' /usr/src/app/entrypoint.production.sh
-RUN chmod +x /usr/src/app/entrypoint.production.sh
+RUN sed -i 's/\r//' ./entrypoint.production.sh
+RUN chmod +x ./entrypoint.production.sh
 
 ENTRYPOINT [ "./entrypoint.production.sh" ]
