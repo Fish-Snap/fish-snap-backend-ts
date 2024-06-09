@@ -1,56 +1,43 @@
-# base node image
-FROM node:20 as base
+# PRODUCTION DOCKERFILE
+# ---------------------
+# This Dockerfile allows to build a Docker image of the NestJS application
+# and based on a NodeJS 20 image. The multi-stage mechanism allows to build
+# the application in a "builder" stage and then create a lightweight production
+# image containing the required dependencies and the JS build files.
+# 
+# Dockerfile best practices
+# https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+# Dockerized NodeJS best practices
+# https://github.com/nodejs/docker-node/blob/master/docs/BestPractices.md
+# https://www.bretfisher.com/node-docker-good-defaults/
+# http://goldbergyoni.com/checklist-best-practice-of-node-js-in-production/
 
-# set for base and all layer that inherit from it
+FROM node:20-alpine as builder
+
+ENV NODE_ENV build
+
+USER node
+WORKDIR /home/node
+
+COPY package*.json ./
+RUN npm ci
+
+COPY --chown=node:node . .
+RUN npx prisma generate \
+    && npm run build \
+    && npm prune --omit=dev
+
+# ---
+
+FROM node:20-alpine
+
 ENV NODE_ENV production
 
-# Install all node_modules, including dev dependencies
-FROM base as deps
+USER node
+WORKDIR /home/node
 
-WORKDIR /usr/src/app
+COPY --from=builder --chown=node:node /home/node/package*.json ./
+COPY --from=builder --chown=node:node /home/node/node_modules/ ./node_modules/
+COPY --from=builder --chown=node:node /home/node/dist/ ./dist/
 
-COPY package.json ./
-RUN yarn
-
-# Setup production node_modules
-FROM base as production-deps
-
-WORKDIR /usr/src/app
-
-COPY package.json ./
-RUN yarn --production
-
-# Build the app
-FROM base as build
-
-WORKDIR /usr/src/app
-
-COPY --from=deps /usr/src/app/node_modules /usr/src/app/node_modules
-
-COPY prisma ./prisma/
-
-COPY . .
-RUN yarn prisma generate
-RUN yarn build
-
-# Finally, build the production image with minimal footprint
-FROM base
-
-ENV PORT=3000
-ENV NODE_ENV=production
-
-WORKDIR /usr/src/app
-
-COPY --from=production-deps /usr/src/app/node_modules /usr/src/app/node_modules
-COPY --from=build /usr/src/app/node_modules/.prisma /usr/src/app/node_modules/.prisma
-
-COPY --from=build /usr/src/app/dist /usr/src/app/dist
-COPY --from=build /usr/src/app/utils /usr/src/app/utils
-COPY --from=build /usr/src/app/package.json /usr/src/app/package.json
-COPY --from=build /usr/src/app/prisma /usr/src/app/prisma
-COPY --from=build /usr/src/app/entrypoint.production.sh /usr/src/app/entrypoint.production.sh
-
-RUN sed -i 's/\r//' /usr/src/app/entrypoint.production.sh
-RUN chmod +x /usr/src/app/entrypoint.production.sh
-
-ENTRYPOINT [ "./entrypoint.production.sh" ]
+CMD ["node", "dist/server.js"]
