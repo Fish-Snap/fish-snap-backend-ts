@@ -43,6 +43,21 @@ export class AuthService {
   }
 
   /*
+  |--------------------------------------------------------------------------
+  | Admin Service
+  |--------------------------------------------------------------------------
+  */
+
+  async registerAdmin(dto: RegisterUserDto) {
+    return await this.authRepository.registerAdmin(dto);
+  }
+
+
+  async loginAdmin(dto: LoginUserDto) {
+    return await this.authRepository.loginAdmin(dto);
+  }
+
+  /*
     |--------------------------------------------------------------------------
     | Helper Auth
     |--------------------------------------------------------------------------

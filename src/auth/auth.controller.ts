@@ -72,7 +72,17 @@ export class AuthController {
     | Auth admin enpoint
     |--------------------------------------------------------------------------
     */
+  @Post('admin/register')
+  async registerAdmin(@Body() dto: RegisterUserDto, @Res() res) {
+    await this.authService.registerAdmin(dto);
+    return this.httpHelper.formatResponse(res, HttpStatus.CREATED, {})
+  }
 
+  @Post('admin/login')
+  async loginAdmin(@Body() dto: LoginUserDto, @Res() res) {
+    const result = await this.authService.loginAdmin(dto);
+    return this.httpHelper.formatResponse(res, HttpStatus.OK, result)
+  }
 
   /*
    |--------------------------------------------------------------------------

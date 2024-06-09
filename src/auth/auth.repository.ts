@@ -7,7 +7,7 @@ import { TokenType } from '../helpers/helper';
 import { PrismaService } from '../prisma/prisma.service';
 import { LoginUserDto } from './dto/login-user.dto';
 import { UserQuery } from '../prisma/queries/user/user.query';
-import { PrismaClient, TypeRoleUser } from '@prisma/client';
+import { PrismaClient, TypeRoleAdmin, TypeRoleUser } from '@prisma/client';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { MailService } from '../mail/mail.service';
 import { SendVerifyEmailDto } from '../mail/dto/send-verify-email.dto';
@@ -115,7 +115,7 @@ export class AuthRepository {
 
             return await this.signJwtToken(
                 user.id,
-                TypeRoleUser.USER,
+                user.role,
                 TokenType.FULL,
                 '7d',
             );
@@ -138,6 +138,48 @@ export class AuthRepository {
       | Auth admin function
       |--------------------------------------------------------------------------
       */
+
+    async registerAdmin(dto: RegisterUserDto) {
+        dto.username = dto.username.toLowerCase().trim();
+        // hashing password from body dto
+        const salt = await bcrypt.genSalt();
+        const hash = await bcrypt.hash(dto.password, salt);
+        dto.password = hash;
+
+        const createdAdmin = await this.userQuery.registerAdmin(dto);
+        if (!createdAdmin) {
+            throw new BadRequestException('Admin gagal ditambahkan');
+        }
+        return createdAdmin;
+
+    }
+
+    async loginAdmin(dto: LoginUserDto) {
+        try {
+            dto.username = dto.username.toLowerCase().trim();
+            dto.email = dto.email.toLowerCase().trim();
+            const user = await this.userQuery.findAdminByEmailOrUsername(dto.username || dto.email);
+
+            if (!user) {
+                throw new BadRequestException('User tidak ditemukan');
+            }
+
+            const validPassword = await bcrypt.compare(dto.password, user.password);
+
+            if (!validPassword) {
+                throw new BadRequestException('Password salah');
+            }
+
+            return await this.signJwtToken(
+                user.id,
+                user.role,
+                TokenType.FULL,
+                '7d',
+            );
+        } catch (error) {
+            throw error;
+        }
+    }
 
     /*
       |--------------------------------------------------------------------------

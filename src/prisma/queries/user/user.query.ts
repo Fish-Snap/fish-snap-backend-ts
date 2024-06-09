@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DbService } from '../../db.service';
 import { RegisterUserDto } from '../../../auth/dto/register-user.dto';
-import { PrismaClient } from '@prisma/client';
+import { Prisma, PrismaClient } from '@prisma/client';
 
 
 @Injectable()
@@ -82,5 +82,23 @@ export class UserQuery extends DbService {
                 password
             }
         })
+    }
+
+    async registerAdmin(payload: Prisma.UserAdminCreateInput, prismaTx?: PrismaClient) {
+        const prisma = prismaTx || this.prisma;
+        return await prisma.userAdmin.create({
+            data: payload
+        })
+    }
+
+    async findAdminByEmailOrUsername(emailOrUsername: string) {
+        return await this.prisma.userAdmin.findFirst({
+            where: {
+                OR: [
+                    { email: emailOrUsername },
+                    { username: emailOrUsername },
+                ],
+            },
+        });
     }
 }
