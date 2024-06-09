@@ -31,12 +31,14 @@ export class NewsService {
         return await this.newsRepository.findNewsByCurrentDay();
     }
 
-    async createNews(dto: CreateNewsDto) {
-        return await this.newsRepository.createNews(dto);
+    async createNews(token: string, dto: CreateNewsDto) {
+        const { sub } = await this.authService.decodeJwtToken(token)
+        return await this.newsRepository.createNews(sub, dto);
     }
 
-    async updateNews(id: string, dto: UpdateNewsDto) {
-        return await this.newsRepository.updateNews(id, dto);
+    async updateNews(token: string, id: string, dto: UpdateNewsDto) {
+        const { sub } = await this.authService.decodeJwtToken(token)
+        return await this.newsRepository.updateNews(id, sub, dto);
     }
 
     async deleteNews(id: string) {

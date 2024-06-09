@@ -1,6 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { TypeNews } from '@prisma/client';
-import { ArrayNotEmpty, IsArray, IsDate, IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { ArrayNotEmpty, IsArray, IsDate, IsEnum, IsNotEmpty, IsOptional, IsString, ValidateIf } from 'class-validator';
 
 export class CreateNewsDto {
     @IsString()
@@ -19,18 +19,16 @@ export class CreateNewsDto {
     @IsString()
     urlHeaderImg?: string;
 
-    @IsOptional()
+    @ValidateIf((o: CreateNewsDto) => o.type === TypeNews.EXTERNAL)
+    @IsNotEmpty()
     @IsString()
-    urlExternalNews?: string;
+    urlExternalNews: string;
 
     @IsDate()
     @IsNotEmpty()
     publicationAt: Date;
 
-    @IsOptional()
-    @IsString()
-    idAdmin?: string;
-
+    @ValidateIf((o: CreateNewsDto) => o.type === TypeNews.INTERNAL)
     @IsString()
     @IsNotEmpty()
     nameAuthor: string;
@@ -41,7 +39,7 @@ export class CreateNewsDto {
 
     @IsString()
     @IsNotEmpty()
-    idCategoryNews: string;
+    slugCategoryNews: string;
 }
 
 export class UpdateNewsDto extends PartialType(CreateNewsDto) { }

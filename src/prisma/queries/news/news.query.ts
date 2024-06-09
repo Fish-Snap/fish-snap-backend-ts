@@ -80,6 +80,14 @@ export class NewsQuery extends DbService {
         })
     }
 
+    async findCategoryNewsBySlug(slug: string) {
+        return await this.prisma.categoryNews.findUnique({
+            where: {
+                slug
+            }
+        })
+    }
+
     async findAllCategoryNews() {
         return await this.prisma.categoryNews.findMany();
     }

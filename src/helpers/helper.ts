@@ -104,3 +104,13 @@ export const isValidDateStringUsingTzTime = (date: string): boolean => {
 
   return splittedPlus.length === 2 || splittedMins.length === 2;
 };
+
+export const generateSlug = (input: string) => {
+  // Remove symbols using regular expression
+  const cleanedInput = input.replace(/[^\w\s-]/g, '');
+
+  // Replace spaces with dashes, excluding the last space
+  const slug = cleanedInput.replace(/\s+(?=\S)(?!$)/g, '-').toLowerCase();
+
+  return slug;
+};

@@ -5,7 +5,7 @@ import { UserQuery } from '../prisma/queries/user/user.query';
 import { TypeNews } from '@prisma/client';
 import { CreateCategoryNewsDto, UpdateCategoryNewsDto } from './dto/create-category-news.dto';
 import { RangeDateDto } from '../helpers/dto/range-date.dto';
-import { checkDateRange, isValidDateStringUsingTzTime } from '../helpers/helper';
+import { checkDateRange, generateSlug, isValidDateStringUsingTzTime } from '../helpers/helper';
 
 
 @Injectable()
@@ -50,15 +50,14 @@ export class NewsRepository {
         return await this.newsQuery.findByCurrentDay();
     }
 
-    async createNews(dto: CreateNewsDto) {
-        await this.findCategoryNewsByIdOrThrow(dto.idCategoryNews);
-        if (dto.idAdmin) {
-            const admin = await this.userQuery.findById(dto.idAdmin);
-            if (!admin) throw new BadRequestException('Admin tidak ditemukan');
-            if (dto.type === TypeNews.INTERNAL) {
-                dto.nameAuthor = admin.name
-            }
+    async createNews(idAdmin: string, dto: CreateNewsDto) {
+        const categoryNews = await this.findCategoryNewsBySlugOrThrow(dto.slugCategoryNews);
+        const admin = await this.userQuery.findById(idAdmin);
+        if (!admin) throw new BadRequestException('Admin tidak ditemukan');
+        if (dto.type === TypeNews.INTERNAL) {
+            dto.nameAuthor = admin.name
         }
+
 
         return await this.newsQuery.create({
             title: dto.title,
@@ -69,24 +68,20 @@ export class NewsRepository {
             urlThumbImg: dto.urlThumbImg,
             type: dto.type,
             publicationAt: dto.publicationAt,
-            idAdmin: dto.idAdmin,
+            idAdmin: idAdmin,
             categoryNews: {
                 connect: {
-                    id: dto.idCategoryNews
+                    id: categoryNews.id
                 }
             }
         });
     }
 
-    async updateNews(id: string, dto: UpdateNewsDto) {
+    async updateNews(id: string, idAdmin: string, dto: UpdateNewsDto) {
         const news = await this.findNewsByIdOrThrow(id);
 
-        if (dto.idAdmin) {
-            const admin = await this.userQuery.findById(dto.idAdmin);
-            if (!admin) throw new BadRequestException('Admin tidak ditemukan');
-            if (dto.type === TypeNews.INTERNAL) {
-                dto.nameAuthor = admin.name;
-            }
+        if (idAdmin !== news.idAdmin) {
+            throw new BadRequestException('Anda tidak berhak mengupdate berita ini');
         }
 
         const updateData: Partial<UpdateNewsDto> & { categoryNews?: { connect: { id: string } } } = {
@@ -98,14 +93,13 @@ export class NewsRepository {
             urlThumbImg: dto.urlThumbImg,
             type: dto.type,
             publicationAt: dto.publicationAt,
-            idAdmin: dto.idAdmin,
         };
 
-        if (dto.idCategoryNews && dto.idCategoryNews !== news.idCategoryNews) {
-            await this.findCategoryNewsByIdOrThrow(dto.idCategoryNews);
+        if (dto.slugCategoryNews) {
+            const categoryNews = await this.findCategoryNewsBySlugOrThrow(dto.slugCategoryNews);
             updateData.categoryNews = {
                 connect: {
-                    id: dto.idCategoryNews,
+                    id: categoryNews.id,
                 },
             };
         }
@@ -132,21 +126,46 @@ export class NewsRepository {
         return categoryNews
     }
 
+    async findCategoryNewsBySlugOrThrow(id: string) {
+        const categoryNews = await this.newsQuery.findCategoryNewsBySlug(id);
+        if (!categoryNews) {
+            throw new BadRequestException('Kategori berita tidak ditemukan');
+        }
+        return categoryNews
+    }
+
     async findAllCategoryNews() {
         return await this.newsQuery.findAllCategoryNews();
     }
 
     async createCategoryNews(dto: CreateCategoryNewsDto) {
+        const slug = generateSlug(dto.name)
+
+        const existCategoryNews = await this.newsQuery.findCategoryNewsBySlug(slug);
+        if (existCategoryNews) {
+            throw new BadRequestException('Kategori berita sudah ada');
+        }
+
         return await this.newsQuery.createCategoryNews({
             name: dto.name,
+            slug: slug,
             tags: dto.tags
         });
     }
 
     async updateCategoryNews(id: string, dto: UpdateCategoryNewsDto) {
-        await this.findCategoryNewsByIdOrThrow(id);
+        const categoryNews = await this.findCategoryNewsByIdOrThrow(id);
+        let slug = categoryNews.slug
+        if (dto.name && dto.name !== categoryNews.name) {
+            slug = generateSlug(dto.name)
+            const existCategoryNews = await this.newsQuery.findCategoryNewsBySlug(slug);
+            if (existCategoryNews) {
+                throw new BadRequestException('Kategori berita sudah ada');
+            }
+        }
         return await this.newsQuery.updateCategoryNews(id, {
             name: dto.name,
+            slug: slug,
             tags: dto.tags && dto.tags.length > 0 ? dto.tags : undefined
         });
     }

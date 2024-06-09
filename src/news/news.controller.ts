@@ -10,6 +10,7 @@ import {
     Delete,
     Query,
     UseGuards,
+    Headers,
 } from '@nestjs/common';
 import { HttpHelper } from '../helpers/http-helper';
 import { NewsService } from './news.service';
@@ -81,16 +82,16 @@ export class NewsController {
     @Post()
     @UseGuards(JwtGuard, RoleGuard)
     @Roles(TypeRoleAdmin.ADMIN, TypeRoleAdmin.SUPER_ADMIN)
-    async createNews(@Body() dto: CreateNewsDto, @Res() res) {
-        const result = await this.newsService.createNews(dto);
+    async createNews(@Body() dto: CreateNewsDto, @Res() res, @Headers("authorization") authorization: string,) {
+        const result = await this.newsService.createNews(authorization, dto);
         return this.httpHelper.formatResponse(res, HttpStatus.CREATED, result)
     }
 
     @Put(":id")
     @UseGuards(JwtGuard, RoleGuard)
     @Roles(TypeRoleAdmin.ADMIN, TypeRoleAdmin.SUPER_ADMIN)
-    async updateNews(@Body() dto: UpdateNewsDto, @Res() res, @Param("id") id: string) {
-        await this.newsService.updateNews(id, dto);
+    async updateNews(@Body() dto: UpdateNewsDto, @Res() res, @Param("id") id: string, @Headers("authorization") authorization: string,) {
+        await this.newsService.updateNews(authorization, id, dto);
         return this.httpHelper.formatResponse(res, HttpStatus.OK, {})
     }
 
