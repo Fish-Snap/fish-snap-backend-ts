@@ -138,4 +138,9 @@ export class NewsRepository {
             tags: dto.tags && dto.tags.length > 0 ? dto.tags : undefined
         });
     }
+
+    async deleteCategoryNews(id: string) {
+        await this.findCategoryNewsByIdOrThrow(id);
+        return await this.newsQuery.deleteCategoryNews(id);
+    }
 }
