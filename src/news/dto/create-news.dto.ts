@@ -7,6 +7,7 @@ export class CreateNewsDto {
     @IsNotEmpty()
     title: string;
 
+    @ValidateIf((o: CreateNewsDto) => o.type === TypeNews.INTERNAL)
     @IsArray()
     @ArrayNotEmpty()
     content: string[];
@@ -24,11 +25,12 @@ export class CreateNewsDto {
     @IsString()
     urlExternalNews: string;
 
+    @ValidateIf((o: CreateNewsDto) => o.type === TypeNews.EXTERNAL)
     @IsDate()
     @IsNotEmpty()
     publicationAt: Date;
 
-    @ValidateIf((o: CreateNewsDto) => o.type === TypeNews.INTERNAL)
+    @ValidateIf((o: CreateNewsDto) => o.type === TypeNews.EXTERNAL)
     @IsString()
     @IsNotEmpty()
     nameAuthor: string;

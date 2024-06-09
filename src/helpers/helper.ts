@@ -3,7 +3,7 @@ import { createWriteStream, mkdirSync, unlink } from 'fs';
 import { Readable } from 'stream';
 import * as path from 'path';
 import { extname } from 'path';
-import moment from "moment";
+import * as moment from 'moment';
 
 export enum TokenType {
   FULL = 'FULL',

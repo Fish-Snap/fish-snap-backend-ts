@@ -101,4 +101,12 @@ export class UserQuery extends DbService {
             },
         });
     }
+
+    async findAdminById(id: string) {
+        return await this.prisma.userAdmin.findUnique({
+            where: {
+                id
+            }
+        })
+    }
 }

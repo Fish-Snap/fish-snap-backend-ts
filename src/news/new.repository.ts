@@ -52,10 +52,11 @@ export class NewsRepository {
 
     async createNews(idAdmin: string, dto: CreateNewsDto) {
         const categoryNews = await this.findCategoryNewsBySlugOrThrow(dto.slugCategoryNews);
-        const admin = await this.userQuery.findById(idAdmin);
+        const admin = await this.userQuery.findAdminById(idAdmin);
         if (!admin) throw new BadRequestException('Admin tidak ditemukan');
         if (dto.type === TypeNews.INTERNAL) {
             dto.nameAuthor = admin.name
+            dto.publicationAt = new Date()
         }
 
 
