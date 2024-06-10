@@ -6,8 +6,9 @@ import { FolderBucketType } from '../../helpers/helper';
 export class GatewayStorageBucketRepository {
   private readonly bucketName = process.env.STORAGE_BUCKET_NAME;
   private readonly storage = new Storage({
-    keyFilename: 'service_account_staging.json',
+    credentials: JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS),
   });
+
   async createFolderIfNotExists(folder: FolderBucketType): Promise<void> {
     const bucket = this.storage.bucket(this.bucketName);
     const folderExists = await this.checkFolderExists(bucket, folder);
