@@ -8,6 +8,7 @@ import { MailModule } from './mail/mail.module';
 import { FishModule } from './fish/fish.module';
 import { GatewayModule } from './gateway/gateway.module';
 import { NewsModule } from './news/news.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -22,7 +23,8 @@ import { NewsModule } from './news/news.module';
     MailModule,
     FishModule,
     GatewayModule,
-    NewsModule
+    NewsModule,
+    UserModule
   ],
   controllers: [],
   providers: [],
