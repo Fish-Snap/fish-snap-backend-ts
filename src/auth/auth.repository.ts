@@ -11,6 +11,7 @@ import { PrismaClient, TypeRoleAdmin, TypeRoleUser } from '@prisma/client';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { MailService } from '../mail/mail.service';
 import { SendVerifyEmailDto } from '../mail/dto/send-verify-email.dto';
+import { SendResetPasswordDto } from '../mail/dto/send-reset-password.dto';
 @Injectable()
 export class AuthRepository {
     constructor(
@@ -140,6 +141,60 @@ export class AuthRepository {
         const salt = await bcrypt.genSalt();
         const hash = await bcrypt.hash(newPassword, salt);
         return await this.userQuery.changePassword(id, hash);
+    }
+
+    async sendForgotPassword(email: string) {
+        // Start a transaction
+        await this.prisma.$transaction(async (tx: PrismaClient) => {
+            const user = await this.userQuery.findByEmailOrUsername(email);
+            if (!user) {
+                throw new BadRequestException('User tidak ditemukan');
+            }
+
+            // expireAt 1 day
+            const expireCodeVerify = new Date().getTime() + 1000 * 60 * 60 * 24
+            const min = 10000
+            const max = 99999
+            const codeVerify = Math.floor(Math.random() * (max - min + 1)) + min // Angka acak 5 digit
+
+            const updatedUser = await this.userQuery.update(user.id, {
+                codeVerify,
+                expiresCodeVerifyAt: new Date(expireCodeVerify)
+            }, tx);
+
+            const resetPasswordLink = `${process.env.API_URL}/auth/forgot-password?idUser=${updatedUser.id}&codeVerify=${updatedUser.codeVerify}`;
+            const sendResetPasswordLinkDto: SendResetPasswordDto = {
+                email: user.email,
+                username: user.username,
+                resetLink: resetPasswordLink,
+            };
+            await this.mailService.sendEmailForgotPassword(sendResetPasswordLinkDto);
+        });
+
+    }
+
+    async resetPassword(id: string, newPassword: string) {
+        await this.findUserByIdOrThrow(id);
+        const salt = await bcrypt.genSalt();
+        const hash = await bcrypt.hash(newPassword, salt);
+        await this.userQuery.updateIsVerifiedEmail(id, true);
+        return await this.userQuery.changePassword(id, hash);
+    }
+
+    async verifyForgotPassword(id: string, codeVerify: number) {
+        const user = await this.findUserByIdOrThrow(id);
+        if (user.codeVerify !== codeVerify) {
+            throw new BadRequestException('Kode verifikasi salah');
+        }
+        if (user.expiresCodeVerifyAt < new Date()) {
+            throw new BadRequestException('Kode verifikasi sudah kadaluarsa');
+        }
+        return await this.signJwtToken(
+            user.id,
+            user.role,
+            TokenType.BRANCH,
+            '1d',
+        );
     }
 
     /*
