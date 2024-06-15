@@ -14,13 +14,13 @@ import {
     Headers,
     UploadedFile,
 } from '@nestjs/common';
-import { UserService } from './User.service';
 import { HttpHelper } from '../helpers/http-helper';
 import { JwtGuard, RoleGuard } from '../auth/guard';
 import { TypeRoleUser } from '@prisma/client';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Roles } from '../auth/decorator';
 import UpdateProfileDto from './dto/update-user.dto';
+import { UserService } from './user.service';
 
 
 @Controller('user')
