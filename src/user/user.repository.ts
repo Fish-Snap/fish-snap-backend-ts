@@ -38,14 +38,6 @@ export class UserRepository {
     }
 
     async updateProfile(idUser: string, dto: UpdateProfileDto, file?: Express.Multer.File,) {
-        if (file) {
-            _validateFile(
-                `Foto Profil`,
-                file,
-                ['.jpeg', '.jpg', '.png'],
-                1,
-            );
-        }
         const user = await this.findUserByIdOrThrow(idUser);
         if (dto.username && user.username !== dto.username) {
             const exists = await this.userQuery.findByEmailOrUsername(dto.username);
@@ -58,13 +50,21 @@ export class UserRepository {
 
         await this.prisma.$transaction(async (tx: PrismaClient) => {
             let urlFileFoto: string;
-            // upload file
-            const remoteFileName = getCustomFilename(
-                `profile-${Date.now()}-${Math.round(Math.random() * 1e9)}`,
-                file,
-            );
-            urlFileFoto = await this.gatewayService.uploadFile(file, remoteFileName, FolderBucketType.USER_PROFILE);
+            if (file) {
+                _validateFile(
+                    `Foto Profil`,
+                    file,
+                    ['.jpeg', '.jpg', '.png'],
+                    1,
+                );
+                // upload file
+                const remoteFileName = getCustomFilename(
+                    `profile-${Date.now()}-${Math.round(Math.random() * 1e9)}`,
+                    file,
+                );
+                urlFileFoto = await this.gatewayService.uploadFile(file, remoteFileName, FolderBucketType.USER_PROFILE);
 
+            }
             const updateUser = await tx.user.update({
                 where: {
                     id: user.id
