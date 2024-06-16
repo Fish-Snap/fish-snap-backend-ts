@@ -12,6 +12,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Bawal Hitam Bakar",
                 description: "Resep bawal hitam bakar yang lezat dan mudah dibuat.",
+                urlImg: "https://www.dapurkobe.co.id/wp-content/uploads/bawal-bakar-lada-hitam.jpg",
                 material: [
                     "1 ekor bawal hitam",
                     "1 buah jeruk nipis",
@@ -36,6 +37,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Bawal Hitam Masak Tauco",
                 description: "Resep ikan bawal hitam masak tauco yang lezat dan gurih.",
+                urlImg: "https://dapurasyik.com/wp-content/uploads/2016/10/Resep-Ikan-Bawal-Masak-Tauco.jpg",
                 material: [
                     "2 ekor Bawal hitam, cuci bersih dan goreng hingga kering",
                     "4 siung bawang putih",
@@ -59,6 +61,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Bawal Hitam Goreng",
                 description: "Resep bawal hitam goreng yang sederhana dan lezat.",
+                urlImg: "https://pbs.twimg.com/media/EWxodSfX0AANVO9.jpg",
                 material: [
                     "1 kilo ikan laut bawal hitam (isi 2)",
                     "Secukupnya garam",
@@ -76,6 +79,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Bawal Hitam Acar Kuning",
                 description: "Resep bawal hitam acar kuning yang lezat dan segar.",
+                urlImg: "https://i.pinimg.com/originals/b1/47/32/b1473247e22ca993b6f008e14d81eae9.jpg",
                 material: [
                     "1 kg bawal hitam ukuran sedang",
                     "500 ml air",
@@ -105,6 +109,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Bawal Hitam Asam Manis",
                 description: "Resep ikan bawal hitam asam manis yang lezat dan menggugah selera.",
+                urlImg: "https://img-global.cpcdn.com/recipes/885071637a47dcd2/1200x630cq70/photo.jpg",
                 material: [
                     "2 ekor bawal hitam",
                     "4 biji tomat",
@@ -132,6 +137,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Bawal Hitam Saos Bawang Kecap",
                 description: "Resep ikan bawal hitam dengan saus bawang kecap yang lezat.",
+                urlImg: "https://cdn-brilio-net.akamaized.net/real/2023/04/12/2004104/resep-olahan-ikan-bawal-masak-kecap.jpg",
                 material: [
                     "5 ekor bawal hitam kecil",
                     "1 jeruk nipis",
@@ -163,6 +169,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Bawal Hitam Kuah Pedas Manis",
                 description: "Resep bawal hitam dengan kuah pedas manis yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/eba1ab35b2e4cff2/680x482cq70/bawal-hitam-kuah-pedas-manis-foto-resep-utama.jpg",
                 material: [
                     "2 ekor bawal hitam fillet",
                     "3 sendok makan kecap manis (lebih juga boleh)",
@@ -187,6 +194,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Pesmol Ikan Bawal",
                 description: "Resep pesmol ikan bawal yang lezat dan khas.",
+                urlImg: "https://img-global.cpcdn.com/recipes/c1580996dccf1f24/680x482cq70/pesmol-ikan-bawal-foto-resep-utama.jpg",
                 material: [
                     "600 gram ikan Bawal hitam",
                     "1 lembar daun salam",
@@ -214,6 +222,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Kukus Kalasan",
                 description: "Resep ikan kukus kalasan ala Kobe yang lezat dan khas.",
+                urlImg: "https://img-global.cpcdn.com/recipes/6b3a25c642afb8c5/680x482cq70/resep-ikan-kukus-kalasan-foto-resep-utama.jpg",
                 material: [
                     "1 ekor ikan bawal hitam (ukuran 350 gram)",
                     "2 siung bawang putih (digeprek)",
@@ -238,6 +247,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Bawal Bakar Pedas Bungkus",
                 description: "Resep bawal bakar pedas bungkus yang lezat dan khas.",
+                urlImg: "https://img-global.cpcdn.com/recipes/6a80fc52d1a2ccf6/1200x630cq70/photo.jpg",
                 material: [
                     "500 gram bawal hitam",
                     "1 jeruk nipis",
@@ -259,6 +269,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Bawal ala Hongkong",
                 description: "Resep ikan bawal ala Hongkong yang lezat dengan saus khasnya.",
+                urlImg: "https://img-global.cpcdn.com/recipes/0d00972345c5c71d/680x482cq70/resep-tim-ikan-bawal-ala-hongkong-chinese-steamed-fish-with-soy-sesame-sauce-recipe-foto-resep-utama.jpg",
                 material: [
                     "3 potong ikan bawal hitam (500 gram)",
                     "2 batang daun bawang bagian putih, iris halus",
@@ -306,24 +317,26 @@ export const fishModelDatas: IFishModel[] = [
         ],
         productRecipe: [
             {
-                "name": "Ikan Cipa-Cipa Goreng Tepung",
-                "description": "Ikan cipa-cipa yang digoreng dengan tepung crispy, gurih dan renyah.",
-                "material": [
+                name: "Ikan Cipa-Cipa Goreng Tepung",
+                description: "Ikan cipa-cipa yang digoreng dengan tepung crispy, gurih dan renyah.",
+                urlImg: "https://asset-a.grid.id/crop/0x0:0x0/x/photo/2023/05/30/ikan-goreng-tepung-1-1jpg-20230530033839.jpg",
+                material: [
                     "500 gram ikan cipa-cipa",
                     "Tepung terigu secukupnya",
                     "Tepung bumbu secukupnya",
                     "Minyak goreng secukupnya"
                 ],
-                "steps": [
+                steps: [
                     "Bersihkan dan lumuri ikan cipa-cipa dengan tepung bumbu.",
                     "Goreng ikan cipa-cipa dalam minyak panas hingga kecokelatan dan matang sempurna.",
                     "Angkat dan tiriskan sebentar sebelum disajikan."
                 ]
             },
             {
-                "name": "Ikan Cipa-Cipa Tumis Asam Manis",
-                "description": "Ikan cipa-cipa yang ditumis dengan saus asam manis yang segar.",
-                "material": [
+                name: "Ikan Cipa-Cipa Tumis Asam Manis",
+                description: "Ikan cipa-cipa yang ditumis dengan saus asam manis yang segar.",
+                urlImg: "https://cdn.idntimes.com/content-images/community/2023/01/img-20230117-011353-ef0c1130bc152b4cc8871765d71ab6d5.jpg",
+                material: [
                     "500 gram ikan cipa-cipa",
                     "Bawang putih",
                     "Bawang merah",
@@ -335,7 +348,7 @@ export const fishModelDatas: IFishModel[] = [
                     "Kecap manis",
                     "Minyak untuk menumis"
                 ],
-                "steps": [
+                steps: [
                     "Panaskan minyak, tumis bawang putih dan bawang merah hingga harum.",
                     "Masukkan ikan cipa-cipa, aduk hingga berubah warna.",
                     "Tambahkan cabe merah besar dan cabe rawit, aduk rata.",
@@ -345,9 +358,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Ikan Cipa-Cipa Bakar Bumbu Rica-Rica",
-                "description": "Ikan cipa-cipa yang dibakar dengan bumbu rica-rica yang pedas dan nikmat.",
-                "material": [
+                name: "Ikan Cipa-Cipa Bakar Bumbu Rica-Rica",
+                description: "Ikan cipa-cipa yang dibakar dengan bumbu rica-rica yang pedas dan nikmat.",
+                urlImg: "https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/sasefoto/original/41722_ikan-bakar-rica-rica.jpg",
+                material: [
                     "500 gram ikan cipa-cipa",
                     "Bawang putih",
                     "Bawang merah",
@@ -361,7 +375,7 @@ export const fishModelDatas: IFishModel[] = [
                     "Gula",
                     "Minyak untuk menumis"
                 ],
-                "steps": [
+                steps: [
                     "Haluskan bawang putih, bawang merah, cabe merah besar, dan cabe rawit.",
                     "Panaskan minyak, tumis bumbu halus hingga harum.",
                     "Tambahkan ikan cipa-cipa, aduk hingga bumbu merata.",
@@ -372,9 +386,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Ikan Cipa-Cipa Bumbu Kuning",
-                "description": "Ikan cipa-cipa yang dimasak dengan bumbu kuning yang lezat dan gurih.",
-                "material": [
+                name: "Ikan Cipa-Cipa Bumbu Kuning",
+                description: "Ikan cipa-cipa yang dimasak dengan bumbu kuning yang lezat dan gurih.",
+                urlImg: "https://cdn-brilio-net.akamaized.net/news/2020/09/09/191651/1306304-1000xauto-ikan-bumbu-kuning.jpg",
+                material: [
                     "500 gram ikan cipa-cipa",
                     "Bawang putih",
                     "Bawang merah",
@@ -388,7 +403,7 @@ export const fishModelDatas: IFishModel[] = [
                     "Gula",
                     "Minyak untuk menumis"
                 ],
-                "steps": [
+                steps: [
                     "Haluskan bawang putih, bawang merah, kunyit, jahe, kencur, kemiri.",
                     "Panaskan minyak, tumis bumbu halus hingga harum.",
                     "Masukkan ikan cipa-cipa, aduk hingga berubah warna.",
@@ -399,9 +414,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Ikan Cipa-Cipa Gulai",
-                "description": "Ikan cipa-cipa yang dimasak dalam kuah gulai yang kaya rempah dan lezat.",
-                "material": [
+                name: "Ikan Cipa-Cipa Gulai",
+                description: "Ikan cipa-cipa yang dimasak dalam kuah gulai yang kaya rempah dan lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/365185c491c832dd/680x482cq70/gulai-ikan-capa-ikan-laut-foto-resep-utama.jpg",
+                material: [
                     "500 gram ikan cipa-cipa",
                     "Bawang putih",
                     "Bawang merah",
@@ -415,7 +431,7 @@ export const fishModelDatas: IFishModel[] = [
                     "Gula",
                     "Minyak untuk menumis"
                 ],
-                "steps": [
+                steps: [
                     "Haluskan bawang putih, bawang merah, cabe merah besar, cabe rawit, kunyit, jahe, dan lengkuas.",
                     "Panaskan minyak, tumis bumbu halus hingga harum.",
                     "Masukkan ikan cipa-cipa, aduk hingga berubah warna.",
@@ -425,9 +441,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Ikan Cipa-Cipa Asam Pedas",
-                "description": "Ikan cipa-cipa yang dimasak dalam kuah asam pedas yang segar dan pedas.",
-                "material": [
+                name: "Ikan Cipa-Cipa Asam Pedas",
+                description: "Ikan cipa-cipa yang dimasak dalam kuah asam pedas yang segar dan pedas.",
+                urlImg: "https://www.suarakalbar.co.id/wp-content/uploads/2023/12/IMG_20231205_103140.jpg",
+                material: [
                     "500 gram ikan cipa-cipa",
                     "Bawang putih",
                     "Bawang merah",
@@ -441,7 +458,7 @@ export const fishModelDatas: IFishModel[] = [
                     "Gula",
                     "Minyak untuk menumis"
                 ],
-                "steps": [
+                steps: [
                     "Haluskan bawang putih, bawang merah, cabe merah besar, dan cabe rawit.",
                     "Panaskan minyak, tumis bumbu halus hingga harum.",
                     "Tambahkan serai dan daun jeruk, aduk rata.",
@@ -452,9 +469,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Ikan Cipa-Cipa Saus Tiram",
-                "description": "Ikan cipa-cipa yang disajikan dengan saus tiram yang manis dan gurih.",
-                "material": [
+                name: "Ikan Cipa-Cipa Saus Tiram",
+                description: "Ikan cipa-cipa yang disajikan dengan saus tiram yang manis dan gurih.",
+                urlImg: "https://asset-a.grid.id/crop/0x0:0x0/x/photo/2023/03/15/resep-ikan-goreng-saus-tiram-ena-20230315031810.jpg",
+                material: [
                     "500 gram ikan cipa-cipa",
                     "Bawang putih",
                     "Bawang merah",
@@ -464,7 +482,7 @@ export const fishModelDatas: IFishModel[] = [
                     "Kecap manis",
                     "Minyak untuk menumis"
                 ],
-                "steps": [
+                steps: [
                     "Tumis bawang putih, bawang merah, cabe merah besar, dan cabe rawit hingga harum.",
                     "Masukkan ikan cipa-cipa, aduk hingga berubah warna.",
                     "Tambahkan saus tiram dan kecap manis, aduk rata.",
@@ -473,9 +491,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Ikan Cipa-Cipa Kuah Kuning",
-                "description": "Ikan cipa-cipa yang dimasak dalam kuah kuning yang khas dan lezat.",
-                "material": [
+                name: "Ikan Cipa-Cipa Kuah Kuning",
+                description: "Ikan cipa-cipa yang dimasak dalam kuah kuning yang khas dan lezat.",
+                urlImg: "https://cdn-brilio-net.akamaized.net/news/2024/03/20/278586/2235176-1000xauto-17-resep-ikan-kuah-kuning-untuk-sahur-simpel-enak-dan-segar.jpg",
+                material: [
                     "500 gram ikan cipa-cipa",
                     "Bawang putih",
                     "Bawang merah",
@@ -489,7 +508,7 @@ export const fishModelDatas: IFishModel[] = [
                     "Gula",
                     "Minyak untuk menumis"
                 ],
-                "steps": [
+                steps: [
                     "Haluskan bawang putih, bawang merah, kunyit, kemiri, dan jahe.",
                     "Tumis bumbu halus hingga harum.",
                     "Tambahkan serai dan daun jeruk, aduk rata.",
@@ -500,9 +519,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Ikan Cipa-Cipa Gulai Padang",
-                "description": "Ikan cipa-cipa yang dimasak dalam kuah gulai khas Padang yang kaya rempah dan gurih.",
-                "material": [
+                name: "Ikan Cipa-Cipa Gulai Padang",
+                description: "Ikan cipa-cipa yang dimasak dalam kuah gulai khas Padang yang kaya rempah dan gurih.",
+                urlImg: "https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/1005/2024/01/22/Gulai-ikan-kakap-2993418729-2215065080.jpg",
+                material: [
                     "500 gram ikan cipa-cipa",
                     "Bawang putih",
                     "Bawang merah",
@@ -518,7 +538,7 @@ export const fishModelDatas: IFishModel[] = [
                     "Gula",
                     "Minyak untuk menumis"
                 ],
-                "steps": [
+                steps: [
                     "Haluskan bawang putih, bawang merah, cabe merah besar, cabe rawit, kunyit, jahe, dan lengkuas.",
                     "Tumis bumbu halus hingga harum.",
                     "Masukkan ikan cipa-cipa, aduk hingga berubah warna.",
@@ -529,9 +549,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Ikan Cipa-Cipa Kari",
-                "description": "Ikan cipa-cipa yang dimasak dalam kuah kari yang kaya rempah dan beraroma lezat.",
-                "material": [
+                name: "Ikan Cipa-Cipa Kari",
+                description: "Ikan cipa-cipa yang dimasak dalam kuah kari yang kaya rempah dan beraroma lezat.",
+                urlImg: "https://asset.kompas.com/crops/0XphOaOOmHQGN6JGR8ldMDueHtA=/121x64:921x598/750x500/data/photo/2023/09/07/64f95884d3550.jpg",
+                material: [
                     "500 gram ikan cipa-cipa",
                     "Bawang putih",
                     "Bawang merah",
@@ -546,7 +567,7 @@ export const fishModelDatas: IFishModel[] = [
                     "Gula",
                     "Minyak untuk menumis"
                 ],
-                "steps": [
+                steps: [
                     "Haluskan bawang putih, bawang merah, cabe merah besar, cabe rawit, kunyit, jahe, dan lengkuas.",
                     "Tumis bumbu halus hingga harum.",
                     "Masukkan ikan cipa-cipa, aduk hingga berubah warna.",
@@ -556,9 +577,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Ikan Cipa-Cipa Kuah Tomat",
-                "description": "Ikan cipa-cipa yang dimasak dalam kuah tomat yang segar dan beraroma khas.",
-                "material": [
+                name: "Ikan Cipa-Cipa Kuah Tomat",
+                description: "Ikan cipa-cipa yang dimasak dalam kuah tomat yang segar dan beraroma khas.",
+                urlImg: "https://cdn.idntimes.com/content-images/community/2021/01/image-4fbf4d11b99310746151c248f85c50cf_600x400.jpg",
+                material: [
                     "500 gram ikan cipa-cipa",
                     "Bawang putih",
                     "Bawang merah",
@@ -572,7 +594,7 @@ export const fishModelDatas: IFishModel[] = [
                     "Gula",
                     "Minyak untuk menumis"
                 ],
-                "steps": [
+                steps: [
                     "Tumis bawang putih, bawang merah, cabe merah besar, dan cabe rawit hingga harum.",
                     "Masukkan ikan cipa-cipa, aduk hingga berubah warna.",
                     "Tambahkan tomat yang sudah diiris, santan, garam, dan gula secukupnya.",
@@ -603,9 +625,10 @@ export const fishModelDatas: IFishModel[] = [
         ],
         productRecipe: [
             {
-                "name": "Balado Ikan Kembung",
-                "description": "Ikan kembung fillet yang digoreng dan disajikan dengan sambal balado pedas yang khas.",
-                "material": [
+                name: "Balado Ikan Kembung",
+                description: "Ikan kembung fillet yang digoreng dan disajikan dengan sambal balado pedas yang khas.",
+                urlImg: "https://img.okezone.com/content/2020/08/05/298/2257217/resep-balado-ikan-kembung-khas-banjar-untuk-menu-makan-siang-eS3q6SWxrG.jpg",
+                material: [
                     "10 belah ikan kembung fillet",
                     "1 sachet bumbu racik ikan goreng",
                     "2 buah cabe merah besar",
@@ -621,7 +644,7 @@ export const fishModelDatas: IFishModel[] = [
                     "Secukupnya kaldu bubuk",
                     "Minyak sayur untuk menggoreng"
                 ],
-                "steps": [
+                steps: [
                     "Cuci bersih ikan kembung fillet, tambahkan sedikit cuka untuk menghilangkan amis. Taburi bumbu racik ikan goreng secara merata dan diamkan minimal 30 menit di dalam kulkas.",
                     "Panaskan wajan dengan minyak sayur. Goreng ikan kembung fillet hingga matang. Sisihkan.",
                     "Haluskan cabe merah besar, cabe rawit merah, bawang merah, bawang putih, dan lengkuas.",
@@ -633,9 +656,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Ikan Kembung Kuah Kuning",
-                "description": "Ikan kembung yang dimasak dalam kuah kuning khas dengan santan dan rempah-rempah yang harum.",
-                "material": [
+                name: "Ikan Kembung Kuah Kuning",
+                description: "Ikan kembung yang dimasak dalam kuah kuning khas dengan santan dan rempah-rempah yang harum.",
+                urlImg: "https://img-global.cpcdn.com/recipes/43d332c9be7827ce/1200x630cq70/photo.jpg",
+                material: [
                     "7 ekor ikan kembung",
                     "5 buah kacang panjang, potong-potong",
                     "Secukupnya kaldu ayam bubuk, garam, lada bubuk, dan sasa",
@@ -655,7 +679,7 @@ export const fishModelDatas: IFishModel[] = [
                     "2 lembar daun salam",
                     "1 jempol lengkuas, geprek"
                 ],
-                "steps": [
+                steps: [
                     "Rebus bumbu halus sampai setengah empuk, kemudian blender sampai halus. Siapkan bumbu aromatik.",
                     "Lumuri ikan dengan jeruk lemon atau jeruk nipis, kemudian sisihkan. Tumis bumbu halus, tambahkan bumbu aromatik, tumis hingga harum.",
                     "Setelah bumbu harum, tambahkan gula merah, garam, dan bumbu lainnya. Masak sampai harum.",
@@ -665,9 +689,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Pesmol Ikan Kembung",
-                "description": "Ikan kembung yang dimasak dengan bumbu rempah yang khas dan bercitarasa lezat.",
-                "material": [
+                name: "Pesmol Ikan Kembung",
+                description: "Ikan kembung yang dimasak dengan bumbu rempah yang khas dan bercitarasa lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/4129245634e293a3/680x482cq70/pesmol-ikan-kembung-foto-resep-utama.jpg",
+                material: [
                     "2 ekor ikan kembung",
                     "5 siung bawang merah",
                     "2 siung bawang putih",
@@ -683,7 +708,7 @@ export const fishModelDatas: IFishModel[] = [
                     "1 batang sere",
                     "Secukupnya minyak goreng, gula, garam, micin, air matang"
                 ],
-                "steps": [
+                steps: [
                     "Bersihkan ikan kembung dan potong menjadi 2 bagian. Marinasi dengan perasan jeruk nipis dan garam selama kurang lebih 15 menit. Goreng hingga matang, angkat, dan tiriskan.",
                     "Haluskan cabe merah besar, jahe, kunyit, bawang merah, bawang putih, dan kemiri.",
                     "Oseng bumbu halus dan tambahkan daun jeruk, daun salam, lengkuas, dan sere. Oseng sampai harum agar tidak berbau langu.",
@@ -693,9 +718,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Kembung Bakar Bumbu Merah",
-                "description": "Ikan kembung yang dimasak dengan bumbu merah yang kaya rasa, kemudian dibakar hingga harum dan matang.",
-                "material": [
+                name: "Kembung Bakar Bumbu Merah",
+                description: "Ikan kembung yang dimasak dengan bumbu merah yang kaya rasa, kemudian dibakar hingga harum dan matang.",
+                urlImg: "https://img-global.cpcdn.com/recipes/23c23b375ab10cde/1200x630cq70/photo.jpg",
+                material: [
                     "4 ekor ikan kembung",
                     "1/2 sdt garam",
                     "1 buah jeruk kunci",
@@ -708,7 +734,7 @@ export const fishModelDatas: IFishModel[] = [
                     "1 sdt kaldu bubuk",
                     "3 sdm kecap manis"
                 ],
-                "steps": [
+                steps: [
                     "Lumuri ikan dengan jeruk dan garam. Diamkan selama 5 menit agar meresap.",
                     "Goreng ikan hingga kecoklatan. Sisihkan terlebih dahulu.",
                     "Haluskan semua bumbu. Bisa menggunakan chopper agar teksturnya agak kasar.",
@@ -717,9 +743,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Otak-otak Ikan Kembung",
-                "description": "Otak-otak berbahan dasar ikan kembung yang lezat dan mudah disajikan.",
-                "material": [
+                name: "Otak-otak Ikan Kembung",
+                description: "Otak-otak berbahan dasar ikan kembung yang lezat dan mudah disajikan.",
+                urlImg: "https://img-global.cpcdn.com/recipes/971bc8b18d4c4078/680x482cq70/otak-otak-ikan-kembung-foto-resep-utama.jpg",
+                material: [
                     "250 gr ikan kembung fillet",
                     "1 santan kara kemasan kecil / sesuai selera",
                     "5 sendok tepung kanji",
@@ -728,7 +755,7 @@ export const fishModelDatas: IFishModel[] = [
                     "2 siung bawang putih",
                     "1 butir telur"
                 ],
-                "steps": [
+                steps: [
                     "Bersihkan ikan kembung fillet dari durinya.",
                     "Haluskan ikan, tepung kanji, telur, bawang merah, bawang putih, dan santan kara menggunakan chopper.",
                     "Tambahkan gula, garam, dan penyedap secukupnya. Aduk rata dan tes rasa.",
@@ -739,9 +766,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Ikan Kembung Rica Pedas",
-                "description": "Ikan kembung pedas dengan bumbu rica-rica yang kaya rempah.",
-                "material": [
+                name: "Ikan Kembung Rica Pedas",
+                description: "Ikan kembung pedas dengan bumbu rica-rica yang kaya rempah.",
+                urlImg: "https://cdn.idntimes.com/content-images/post/20220128/12256817-1624273527838079-363602390-n-04030764a9d903d6e0458cf38849d088.jpg",
+                material: [
                     "3 ekor kembung besar",
                     "15 cabe merah rawit (bisa ditambah jika suka lebih pedas)",
                     "5 siung bawang putih",
@@ -755,7 +783,7 @@ export const fishModelDatas: IFishModel[] = [
                     "secukupnya Minyak kelapa",
                     "secukupnya Garam, gula, dan kaldu"
                 ],
-                "steps": [
+                steps: [
                     "Bersihkan ikan kembung, beri marinasi, dan goreng hingga matang. Alternatifnya, bisa juga dibakar dengan sedikit minyak kelapa di teflon.",
                     "Haluskan bawang putih, bawang merah, jahe, dan cabe. Tumis hingga harum. Masukkan daun jeruk, sereh, kunyit, dan ketumbar bubuk, lalu tumis lagi hingga harum.",
                     "Tambahkan garam, kaldu, dan gula secukupnya.",
@@ -764,9 +792,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Ikan Kembung Balado Padang / Sambal Bawang",
-                "description": "Ikan kembung digoreng dan disajikan dengan sambal bawang pedas khas Padang.",
-                "material": [
+                name: "Ikan Kembung Balado Padang / Sambal Bawang",
+                description: "Ikan kembung digoreng dan disajikan dengan sambal bawang pedas khas Padang.",
+                urlImg: "https://img-global.cpcdn.com/recipes/cbf1dd169ff7e71b/680x482cq70/ikan-kembung-balado-padang-foto-resep-utama.jpg",
+                material: [
                     "2 ekor ikan kembung",
                     "secukupnya Garam dan gula",
                     "2 buah Air perasan Jeruk lemon atau jeruk limau (opsional)",
@@ -777,7 +806,7 @@ export const fishModelDatas: IFishModel[] = [
                     "4 buah cabe merah besar (opsional)",
                     "1 ruas jahe"
                 ],
-                "steps": [
+                steps: [
                     "Bersihkan ikan kembung, lalu marinasi dengan air jeruk nipis atau lemon dan garam.",
                     "Goreng ikan kembung sampai matang. Setelah matang, angkat dan sisihkan.",
                     "Tumis bumbu yang dihaluskan sampai matang. Tambahkan garam dan gula secukupnya. Jika menggunakan, tambahkan juga air perasan jeruk lemon atau limau. Oseng sebentar.",
@@ -785,9 +814,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Ikan Kembung Masak Sambal Ijo",
-                "description": "Ikan kembung dimasak dengan sambal ijo yang pedas dan segar.",
-                "material": [
+                name: "Ikan Kembung Masak Sambal Ijo",
+                description: "Ikan kembung dimasak dengan sambal ijo yang pedas dan segar.",
+                urlImg: "https://img-global.cpcdn.com/recipes/4aef9a0e95851591/680x482cq70/ikan-kembung-cabe-ijo-foto-resep-utama.jpg",
+                material: [
                     "6 ekor ikan kembung, bersihkan dan goreng",
                     "2 lembar daun jeruk",
                     "1/2 batang sere (geprek)",
@@ -802,16 +832,17 @@ export const fishModelDatas: IFishModel[] = [
                     "3 buah cabe keriting ijo",
                     "10 buah atau secukupnya cabe rawit ijo (sesuai selera kepedasan)"
                 ],
-                "steps": [
+                steps: [
                     "Tumis bumbu iris (bawang putih, bawang merah) hingga harum dengan minyak yang banyak. Masukkan bumbu halus, sere, daun jeruk, irisan cabe ijo, dan tunggu hingga bumbu matang dan warna gelap.",
                     "Masukkan tomat, air, dan bumbui dengan garam, kaldu bubuk, dan gula. Tunggu hingga mendidih.",
                     "Setelah mendidih, tes rasa. Masukkan ikan yang sudah digoreng, aduk pelan dan biarkan air meresap ke dalam ikan. Tunggu hingga air surut dan mengental. Angkat dan sajikan."
                 ]
             },
             {
-                "name": "Ikan Kembung Sambal Matah",
-                "description": "Ikan kembung banjar disajikan dengan sambal matah yang segar dan pedas.",
-                "material": [
+                name: "Ikan Kembung Sambal Matah",
+                description: "Ikan kembung banjar disajikan dengan sambal matah yang segar dan pedas.",
+                urlImg: "https://cdn.idntimes.com/content-images/community/2022/07/fromandroid-e243af09656a0ab005a75618a2f731fb.jpg",
+                material: [
                     "3 ekor ikan kembung banjar",
                     "1 buah jeruk nipis",
                     "1/2 buah tomat",
@@ -823,7 +854,7 @@ export const fishModelDatas: IFishModel[] = [
                     "1/4 sdt lada bubuk",
                     "1/2 sdt kaldu bubuk"
                 ],
-                "steps": [
+                steps: [
                     "Cuci bersih ikan kembung, lalu beri perasan jeruk nipis dan taburkan garam secara merata ke seluruh ikan. Diamkan di dalam kulkas selama 30 menit agar meresap.",
                     "Iris tipis bawang, cabai rawit, sereh, daun jeruk, dan tomat. Masukkan dalam wadah mangkuk keramik atau stainless.",
                     "Panaskan minyak hingga mendidih, lalu tuangkan ke dalam mangkuk yang berisi bahan-bahan tadi.",
@@ -832,9 +863,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Ikan Kembung Bumbu Kuning",
-                "description": "Ikan kembung disajikan dengan kuah bumbu kuning yang kaya rempah, segar, dan pedas.",
-                "material": [
+                name: "Ikan Kembung Bumbu Kuning",
+                description: "Ikan kembung disajikan dengan kuah bumbu kuning yang kaya rempah, segar, dan pedas.",
+                urlImg: "https://i.ytimg.com/vi/wuHv8mE7YBo/maxresdefault.jpg",
+                material: [
                     "4 ekor ikan kembung",
                     "2 lembar bawang daun",
                     "1/2 buah tomat",
@@ -850,7 +882,7 @@ export const fishModelDatas: IFishModel[] = [
                     "5 cm kunyit",
                     "3 cm jahe"
                 ],
-                "steps": [
+                steps: [
                     "Bersihkan dan bagi 2 ikan kembung. Lumuri dengan perasan jeruk nipis, bilas, dan taburi sedikit garam. Diamkan selama minimal 30 menit. Goreng ikan sampai matang.",
                     "Tumis bumbu halus, tambahkan lengkuas, sereh, dan daun jeruk. Tumis sampai matang dan tidak berbau langu. Tambahkan air 300 ml.",
                     "Setelah mendidih, tambahkan garam, gula, dan penyedap secukupnya. Kemudian tambahkan cabe rawit hijau utuh (jika suka pedas, boleh di skip). Masak sampai minyaknya naik.",
@@ -879,9 +911,10 @@ export const fishModelDatas: IFishModel[] = [
         ],
         productRecipe: [
             {
-                "name": "Kenyar Masak Teriyaki Kemangi",
-                "description": "Ikan kenyar dimasak dengan saus teriyaki yang kaya rasa, disajikan dengan aroma harum daun kemangi.",
-                "material": [
+                name: "Kenyar Masak Teriyaki Kemangi",
+                description: "Ikan kenyar dimasak dengan saus teriyaki yang kaya rasa, disajikan dengan aroma harum daun kemangi.",
+                urlImg: "https://img-global.cpcdn.com/recipes/1341f532a0523838/680x482cq70/ikan-ceria-masak-teriyaki-foto-resep-utama.jpg",
+                material: [
                     "500 gram ikan kenyar (ikan apapun boleh, potong-potong sesuai selera)",
                     "1 buah jeruk nipis (ambil airnya)",
                     "4 batang bawang merah",
@@ -898,7 +931,7 @@ export const fishModelDatas: IFishModel[] = [
                     "Secukupnya minyak goreng",
                     "1 sendok teh minyak wijen"
                 ],
-                "steps": [
+                steps: [
                     "Lumuri ikan dengan air jeruk nipis dan biarkan selama sekitar 15 menit. Cuci dan sisihkan.",
                     "Goreng ikan sampai setengah matang. Angkat dan sisihkan.",
                     "Tumis bumbu iris dan ruas jahe hingga harum.",
@@ -908,9 +941,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Ikan Kenyar Bumbu Bali",
-                "description": "Ikan kenyar digoreng dan disajikan dengan bumbu Bali yang kaya rasa, dijamin nikmat untuk dinikmati bersama keluarga.",
-                "material": [
+                name: "Ikan Kenyar Bumbu Bali",
+                description: "Ikan kenyar digoreng dan disajikan dengan bumbu Bali yang kaya rasa, dijamin nikmat untuk dinikmati bersama keluarga.",
+                urlImg: "https://img-global.cpcdn.com/recipes/d48f424ca7e640ea/680x482cq70/756-ikan-kenyar-bumbu-bali-foto-resep-utama.jpg",
+                material: [
                     "1 ekor ikan kenyar, potong menjadi 6 bagian",
                     "1 batang sereh, geprek",
                     "3 lembar daun jeruk",
@@ -926,7 +960,7 @@ export const fishModelDatas: IFishModel[] = [
                     "1 ruas lengkuas",
                     "1 buah tomat"
                 ],
-                "steps": [
+                steps: [
                     "Cuci ikan dan marinasi dengan garam dan lada bubuk. Diamkan selama 10 menit, lalu goreng hingga agak kering. Angkat dan tiriskan.",
                     "Haluskan bumbu halus dengan sedikit air. Jika tidak menggunakan cabai rawit, tambahkan cabai merah besar untuk rasa pedas.",
                     "Siapkan wajan, tumis bumbu halus tanpa minyak goreng sampai air menyusut. Kemudian tambahkan minyak goreng, sereh, dan daun jeruk. Tumis hingga harum, lalu tambahkan sedikit air.",
@@ -934,24 +968,26 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Ikan Kenyar Kuah Pindang",
-                "description": "Kuah pindang yang gurih dan pedas, disajikan dengan ikan kenyar yang segar.",
-                "material": [
+                name: "Ikan Kenyar Kuah Pindang",
+                description: "Kuah pindang yang gurih dan pedas, disajikan dengan ikan kenyar yang segar.",
+                urlImg: "https://cdn0-production-images-kly.akamaized.net/6hujFUZIFBk7cf-Cbg5SSws1QDE=/0x92:999x655/1200x675/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/4139046/original/010800000_1661749019-shutterstock_1840600264.jpg",
+                material: [
                     "2 ekor ikan kenyar",
                     "2 lembar daun salam",
                     "6 cabe rawit",
                     "2 sendok teh garam"
                 ],
-                "steps": [
+                steps: [
                     "Cuci bersih ikan kenyar.",
                     "Masukkan ikan ke dalam panci, tambahkan air sampai terendam, cabe rawit, daun salam, dan garam. Rebus hingga cabe rawit empuk, sekitar 20 menit.",
                     "Untuk penyajian, ambil cabe rawit dan letakkan di atas piring. Uleg cabe rawit bersama trasi yang sudah dibakar hingga halus. Tambahkan kuah pindang dan nasi, aduk hingga rata. Letakkan ikan di atas nasi. Selamat menikmati!"
                 ]
             },
             {
-                "name": "Kenyar Bakar Sambal Matah",
-                "description": "Ikan kenyar yang dipanggang hingga matang, disajikan dengan sambal matah yang segar dan pedas.",
-                "material": [
+                name: "Kenyar Bakar Sambal Matah",
+                description: "Ikan kenyar yang dipanggang hingga matang, disajikan dengan sambal matah yang segar dan pedas.",
+                urlImg: "https://img-global.cpcdn.com/recipes/6666aedb7b36b231/680x482cq70/kembung-bakar-sambal-matah-foto-resep-utama.jpg",
+                material: [
                     "1/4 kg ikan kenyar segar",
                     "Kayu bakar",
                     "5 siung bawang merah",
@@ -961,7 +997,7 @@ export const fishModelDatas: IFishModel[] = [
                     "Sedikit minyak goreng",
                     "Jeruk lemon"
                 ],
-                "steps": [
+                steps: [
                     "Cuci ikan hingga bersih.",
                     "Siapkan api untuk memanggang ikan.",
                     "Bakar ikan dengan api kecil sampai matang.",
@@ -971,9 +1007,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Ikan Kenyar Masak Acar",
-                "description": "Ikan kenyar yang digoreng terlebih dahulu kemudian dimasak dengan bumbu acar yang segar dan pedas.",
-                "material": [
+                name: "Ikan Kenyar Masak Acar",
+                description: "Ikan kenyar yang digoreng terlebih dahulu kemudian dimasak dengan bumbu acar yang segar dan pedas.",
+                urlImg: "https://img-global.cpcdn.com/recipes/68c16c503d052a60/400x400cq70/photo.jpg",
+                material: [
                     "2 potong ikan kenyar",
                     "5 buah cabe rawit merah (iris serong)",
                     "2 sdm acar wortel & timun",
@@ -984,7 +1021,7 @@ export const fishModelDatas: IFishModel[] = [
                     "1 sdm saos tiram",
                     "50 cc air"
                 ],
-                "steps": [
+                steps: [
                     "Panaskan minyak lalu goreng ikannya terlebih dahulu. Sisihkan.",
                     "Ambil minyak ikan sedikit untuk menumis bawang putih. Setelah harum, masukkan semua bahan kecuali ikan. Tumis hingga semua bahan tercampur dan matang.",
                     "Masukkan ikan yang sudah digoreng. Masak sebentar agar bumbu meresap ke ikan. Setelah meresap dan kuah kental, matikan api.",
@@ -992,9 +1029,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Sarden Ikan Kenyar",
-                "description": "Sarden khas yang menggunakan ikan kenyar sebagai bahan utamanya, disajikan dengan bumbu yang kaya rasa dan pedas.",
-                "material": [
+                name: "Sarden Ikan Kenyar",
+                description: "Sarden khas yang menggunakan ikan kenyar sebagai bahan utamanya, disajikan dengan bumbu yang kaya rasa dan pedas.",
+                urlImg: "https://img-global.cpcdn.com/recipes/660e40271c66fe03/680x482cq70/sarden-nyonyorikankenyar-foto-resep-utama.jpg",
+                material: [
                     "1 ekor ikan kenyar",
                     "1 sdm Saus tomat",
                     "2 sdm kecap manis",
@@ -1009,7 +1047,7 @@ export const fishModelDatas: IFishModel[] = [
                     "15 cabe rawit",
                     "3 buah tomat"
                 ],
-                "steps": [
+                steps: [
                     "Kukus terlebih dahulu ikan kenyar hingga matang. Dinginkan, lalu suir (besar) dan buang tulangnya.",
                     "Goreng ikan dengan minyak sedikit saja dengan api kecil hingga matang. Pastikan minyaknya tidak terlalu banyak untuk menghindari meletup-letup. Jika tidak digoreng, hindari air berlebihan agar ikan tidak hancur. Ikan tidak perlu terlalu kering.",
                     "Tumis bumbu yang dirajang, mulai dari bawang merah dan bawang putih hingga harum. Tambahkan cabe dan tomat. Kemudian masukkan ikan kenyar dan sedikit air. Aduk rata.",
@@ -1017,9 +1055,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Geseng Tongkol Kenyar",
-                "description": "Geseng tongkol kenyar adalah hidangan khas yang menggunakan ikan kenyar sebagai bahan utamanya, dimasak dengan bumbu yang kaya rasa dan segar.",
-                "material": [
+                name: "Geseng Tongkol Kenyar",
+                description: "Geseng tongkol kenyar adalah hidangan khas yang menggunakan ikan kenyar sebagai bahan utamanya, dimasak dengan bumbu yang kaya rasa dan segar.",
+                urlImg: "https://img-global.cpcdn.com/recipes/7189e73556f8819e/680x482cq70/geseng-tongkol-kenyar-foto-resep-utama.jpg",
+                material: [
                     "2 ekor ikan segar kenyar (atau ikan lain sesuai selera)",
                     "2 potong tahu (potong dadu)",
                     "2 sdm kecap ikan",
@@ -1036,7 +1075,7 @@ export const fishModelDatas: IFishModel[] = [
                     "2 ruas jari jahe (geprek)",
                     "2 lembar daun jeruk"
                 ],
-                "steps": [
+                steps: [
                     "Potong ikan kenyar sesuai selera, cuci bersih, rendam sebentar dengan perasan air jeruk nipis, lalu cuci bersih dan tiriskan.",
                     "Panaskan minyak, tumis bumbu iris hingga layu. Masukkan serai dan daun jeruk. Tambahkan kecap ikan dan kecap asin. Aduk hingga harum.",
                     "Masukkan air, gula, garam, lada, dan air jeruk nipis. Biarkan mendidih, lalu cicipi dan sesuaikan rasa. Masukkan potongan ikan dan tahu. Aduk sebentar dan tunggu hingga ikan matang.",
@@ -1044,9 +1083,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Pelasan Ikan Kenyar",
-                "description": "Pelasan ikan kenyar adalah hidangan tradisional yang menggunakan ikan kenyar yang direbus, dibersihkan dari tulangnya, dan kemudian dibumbui dengan rempah-rempah serta bahan lainnya.",
-                "material": [
+                name: "Pelasan Ikan Kenyar",
+                description: "Pelasan ikan kenyar adalah hidangan tradisional yang menggunakan ikan kenyar yang direbus, dibersihkan dari tulangnya, dan kemudian dibumbui dengan rempah-rempah serta bahan lainnya.",
+                urlImg: "https://img-global.cpcdn.com/recipes/265d2987c363931c/680x482cq70/pepes-banyar-foto-resep-utama.jpg",
+                material: [
                     "3 ekor ikan kenyar (direbus dan dibuang tulangnya)",
                     "5 butir bawang putih",
                     "6 butir bawang merah",
@@ -1057,7 +1097,7 @@ export const fishModelDatas: IFishModel[] = [
                     "Gula",
                     "Garam"
                 ],
-                "steps": [
+                steps: [
                     "Rebus ikan kenyar hingga matang, lalu buang tulangnya dan bersihkan.",
                     "Goreng bumbu (bawang putih, bawang merah, cabe besar, cabe kecil, tomat, dan kemiri) hingga harum. Setelah itu, haluskan bumbu bersama dengan garam, gula, dan belimbing wuluh.",
                     "Campur ikan dengan bumbu yang telah dihaluskan. Bungkus campuran tersebut dengan daun pisang.",
@@ -1066,16 +1106,17 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Ikan Kenyar Goreng Sambel Kecap Asin",
-                "description": "Ikan kenyar yang digoreng disajikan dengan sambel kecap asin, memberikan rasa gurih dan pedas yang lezat.",
-                "material": [
+                name: "Ikan Kenyar Goreng Sambel Kecap Asin",
+                description: "Ikan kenyar yang digoreng disajikan dengan sambel kecap asin, memberikan rasa gurih dan pedas yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/54850c06098b1cb2/680x482cq70/ikan-goreng-sambel-kecap-foto-resep-utama.jpg",
+                material: [
                     "1 kg ikan kenyar",
                     "3 siung bawang putih",
                     "1 buah cabe",
                     "Jeruk lemon",
                     "Kecap asin"
                 ],
-                "steps": [
+                steps: [
                     "Cuci bersih ikan kenyar, lalu goreng hingga matang.",
                     "Goreng bawang putih dengan kulitnya hingga matang (lunak). Setelah itu, uleg bersama cabe hingga halus.",
                     "Tambahkan kecap asin sesuai selera ke dalam campuran bawang putih dan cabe yang sudah diuleg. Peras jeruk lemon secukupnya dan aduk rata.",
@@ -1104,9 +1145,10 @@ export const fishModelDatas: IFishModel[] = [
         ],
         productRecipe: [
             {
-                "name": "Ikan Kuwe Bakar",
-                "description": "Ikan kuwe yang dimarinasi dengan bumbu halus kemudian dipanggang hingga matang, disajikan dengan sambal kecap sebagai pelengkap.",
-                "material": [
+                name: "Ikan Kuwe Bakar",
+                description: "Ikan kuwe yang dimarinasi dengan bumbu halus kemudian dipanggang hingga matang, disajikan dengan sambal kecap sebagai pelengkap.",
+                urlImg: "https://images.tokopedia.net/img/cache/700/VqbcmM/2021/9/22/5e6fec51-4a3d-452f-80e9-ade08ced32b5.jpg",
+                material: [
                     "1 ekor ikan kuwe",
                     "6 butir bawang merah",
                     "2 butir bawang putih",
@@ -1118,7 +1160,7 @@ export const fishModelDatas: IFishModel[] = [
                     "1/2 sdt gula merah",
                     "1-2 sdt kecap manis (sesuai selera)"
                 ],
-                "steps": [
+                steps: [
                     "Cuci bersih ikan kuwe, buang insangnya, dan beri perasan jeruk nipis. Diamkan selama 1 menit, lalu bilas kembali sampai bersih. Sisihkan.",
                     "Ulek atau blender bumbu halus. Panaskan minyak goreng, tumis bumbu halus hingga harum dan matang. Tambahkan garam, gula merah, dan air. Aduk rata.",
                     "Tambahkan kecap manis sesuai selera. Aduk rata lalu cicipi rasanya. Matikan kompor dan biarkan agak dingin.",
@@ -1128,9 +1170,10 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Asam Padeh Ikan Kuwe",
-                "description": "Ikan kuwe yang dimasak dengan bumbu asam pedas dan diberi tambahan tahu goreng.",
-                "material": [
+                name: "Asam Padeh Ikan Kuwe",
+                description: "Ikan kuwe yang dimasak dengan bumbu asam pedas dan diberi tambahan tahu goreng.",
+                urlImg: "https://img-global.cpcdn.com/recipes/6c14e2294e090f37/680x482cq70/asam-padeh-ikan-kuwe-foto-resep-utama.jpg",
+                material: [
                     "1 ekor ikan kuwe ukuran sedang",
                     "5 buah tahu, goreng",
                     "150 gram cabe giling",
@@ -1143,16 +1186,17 @@ export const fishModelDatas: IFishModel[] = [
                     "Secukupnya daun ruku-ruku",
                     "Air"
                 ],
-                "steps": [
+                steps: [
                     "Chopper bawang putih, bawang merah, dan jahe. Tuang semua bahan dalam belanga. Masak hingga mendidih.",
                     "Masukkan tahu goreng.",
                     "Masak hingga kuah menyusut."
                 ]
             },
             {
-                "name": "Sup Ikan Kuwe",
-                "description": "Sup ikan kuwe yang segar dan lezat dengan bumbu-bumbu tradisional, disajikan dengan sambal pedas yang menyegarkan.",
-                "material": [
+                name: "Sup Ikan Kuwe",
+                description: "Sup ikan kuwe yang segar dan lezat dengan bumbu-bumbu tradisional, disajikan dengan sambal pedas yang menyegarkan.",
+                urlImg: "https://a-cdn.sindonews.net/dyn/620/content/2019/01/29/185/1374377/tips-bikin-sup-ikan-kuwe-yang-enggak-pake-lama-7yu-thumb.jpg",
+                material: [
                     "1 kg ikan kuwe",
                     "1,5 liter air",
                     "2 batang daun bawang",
@@ -1177,7 +1221,7 @@ export const fishModelDatas: IFishModel[] = [
                     "Garam",
                     "1 jeruk limau"
                 ],
-                "steps": [
+                steps: [
                     "Bersihkan ikan, potong-potong, cuci bersih. Taburi dengan garam dan air jeruk nipis, diamkan 10 menit, cuci lagi sampai bersih.",
                     "Siapkan bumbu. Potong bawang merah dan putih, tumis sampai layu dan harum.",
                     "Rebus air, masukkan daun jeruk, salam, sereh, jahe, batang daun bawang yang putih, separuh bawang bombai utuh (jangan dipotong), lalu masukkan bawang yang sudah ditumis dan asam kandis. Rebus sampai mendidih beberapa saat.",
@@ -1188,16 +1232,17 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Pecak Ikan Kuwe khas Betawi",
-                "description": "Resep pecak ikan Kuwe khas Betawi dengan sambal pecak yang lezat.",
-                "material": [
+                name: "Pecak Ikan Kuwe khas Betawi",
+                description: "Resep pecak ikan Kuwe khas Betawi dengan sambal pecak yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/b06faf5935a08c8d/680x482cq70/ikan-kuwe-sambel-pecak-foto-resep-utama.jpg",
+                material: [
                     "1 ekor ikan Kuwe",
                     "1/2 buah jeruk Lemon (resep asal nipis)",
                     "Secukupnya garam",
                     "Secukupnya kaldu bubuk",
                     "Sambal pecak: 10 bh cabai merah keriting, 5 bu cabai rawit merah, 5 siung bawang merah, 3 gr kencur (2 ruas jari), 6 gr jahe, 1-2 bh jeruk lima (ambil airnya), Secukupnya garam, gula, kaldu bubuk, Secukupnya air"
                 ],
-                "steps": [
+                steps: [
                     "Cuci bersih ikan yang sudah dibuang insang, sirip, dan isi perutnya, dan berikan perasan air lemon dan garam, diamkan sebentar lalu cuci bersih.",
                     "Panaskan minyak sayur, goreng ikan seperlunya.",
                     "Siapkan bahan sambal. Bakar atau sangrai bahan sambalnya. Untuk kepedasan cabai sesuai selera. Chopper atau ulek bahan sambal, tambahkan garam dan penyedap rasa, tidak perlu diulek sampai halus.",
@@ -1206,16 +1251,17 @@ export const fishModelDatas: IFishModel[] = [
                 ]
             },
             {
-                "name": "Bubur Kelor Ikan Kuwe",
-                "description": "Resep bubur kelor dengan tambahan potongan ikan kuwe untuk memberikan cita rasa yang lezat.",
-                "material": [
+                name: "Bubur Kelor Ikan Kuwe",
+                description: "Resep bubur kelor dengan tambahan potongan ikan kuwe untuk memberikan cita rasa yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/f82dc25b30a9e06d/1200x630cq70/photo.jpg",
+                material: [
                     "1,5 cup beras",
                     "2 tangkai daun kelor",
                     "1 potong ikan kuwe (bisa diganti dengan jenis ikan lain)",
                     "1 liter air",
                     "Bumbu: 3 cm jahe, 1 sdt garam, 1 sdt merica bubuk, 1 sdt kaldu bubuk, 3-4 sdm bawang goreng"
                 ],
-                "steps": [
+                steps: [
                     "Potong ikan menjadi dadu.",
                     "Cuci dan petik daun kelor untuk membuang tangkainya.",
                     "Cuci beras dan masak dengan banyak air hingga menjadi bubur.",
@@ -1227,6 +1273,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Pindang Ikan Kuwe",
                 description: "Resep pindang ikan kuwe yang lezat dengan bumbu khas.",
+                urlImg: "https://img-global.cpcdn.com/recipes/8dda29b0c2560d86/1200x630cq70/photo.jpg",
                 material: [
                     "8 siung bawang merah",
                     "3 siung bawang putih",
@@ -1250,6 +1297,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Kuwe Kuah Asam Manis",
                 description: "Resep ikan kuwe dengan kuah asam manis yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/6bc2beb69f1c70c7/680x482cq70/ikan-kuwe-kuah-asam-manis-foto-resep-utama.jpg",
                 material: [
                     "6 potong ikan kuwe (bisa pakai ikan lain)",
                     "2 1/2 sdm air asam jawa (bisa pakai blimbing wuluh)",
@@ -1278,6 +1326,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Kuwe Pesmol",
                 description: "Resep ikan kuwe pesmol dengan bumbu rempah yang khas.",
+                urlImg: "https://img-global.cpcdn.com/recipes/746b2b8507cd7563/680x482cq70/pesmol-ikan-kuwe-foto-resep-utama.jpg",
                 material: [
                     "1 ikan kuwe, potong menjadi 4 bagian",
                     "4 butir bawang merah",
@@ -1311,6 +1360,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Kuwe Kecap",
                 description: "Resep ikan kuwe dengan saus kecap yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/b8615c9bfeff0de6/680x482cq70/ikan-kuwe-masak-kecap-foto-resep-utama.jpg",
                 material: [
                     "1 kg ikan kuwe segar",
                     "3 buah tomat",
@@ -1339,6 +1389,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Kohu-Kohu Ikan Kuwe Asap (Masakan Khas Maluku)",
                 description: "Resep kohu-kohu ikan kuwe asap, masakan khas Maluku yang segar dan lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/922869ad4107af97/680x482cq70/kohu-kohu-ikan-asap-foto-resep-utama.jpg",
                 material: [
                     "200 gr ikan kuwe asap",
                     "2 batang kacang panjang",
@@ -1381,12 +1432,14 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Panggang Salem",
                 description: "Resep panggang salem yang lezat.",
+                urlImg: "https://sumeks.disway.id/upload/1c44a6e2b6d96a648a118539584cd85c.jpeg",
                 material: ["Ikan salem segar", "Bumbu panggang", "Lemon"],
                 steps: ["Bersihkan ikan salem dan lumuri dengan bumbu panggang dan perasan lemon.", "Panggang ikan salem hingga matang dan warnanya kecokelatan.", "Sajikan dengan irisan lemon di atasnya."]
             },
             {
                 name: "Pindang Salem Suwir Pedas",
                 description: "Resep pindang salem suwir pedas yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/7301cb789bfc5db8/1200x630cq70/photo.jpg",
                 material: [
                     "2 ekor Salem",
                     "3 butir Bawang Merah",
@@ -1409,6 +1462,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Pindang Ekor Salem Kecombrang",
                 description: "Resep pindang ekor salem dengan bumbu kecombrang yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/61106b76135e8ecf/400x400cq70/photo.jpg",
                 material: [
                     "1/2 ekor Salem besar bagian ekor (500gr)",
                     "2 sdm Air lemon atau jeruk nipis",
@@ -1438,6 +1492,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Pindang Salem Suwir Pete",
                 description: "Resep pindang salem suwir dengan pete dan bumbu rempah.",
+                urlImg: "https://img-global.cpcdn.com/recipes/ae2d215fd60f120f/400x400cq70/photo.jpg",
                 material: [
                     "4 buah pindang salem besar",
                     "5 lonjor pete",
@@ -1460,6 +1515,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Salem Masak Tauco",
                 description: "Resep ikan salem yang dimasak dengan bumbu tauco yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/6ba9ad7d5a9b19d5/680x482cq70/ikan-salem-tauco-foto-resep-utama.jpg",
                 material: [
                     "1 ekor ikan malalugis atau salem, cuci bersih, potong 2",
                     "3 sendok makan tauco",
@@ -1484,6 +1540,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Tumis Pindang Salem Pedas",
                 description: "Resep tumis pindang salem dengan bumbu pedas.",
+                urlImg: "https://img-global.cpcdn.com/recipes/5aaf88d35391e2c0/1200x630cq70/photo.jpg",
                 material: [
                     "2 keranjang ikan pindang salem (total 4 ikan)",
                     "1 papan pete",
@@ -1507,6 +1564,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Salem Lempah Kuning",
                 description: "Resep ikan salem dengan kuah lempah kuning yang khas.",
+                urlImg: "https://img-global.cpcdn.com/recipes/69c472f7fe74fe3e/680x482cq70/ikan-salem-lempah-kuning-foto-resep-utama.jpg",
                 material: [
                     "2 ekor ikan salem",
                     "1/2 buah nanas",
@@ -1532,6 +1590,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Salem Balado Cabe Ijo",
                 description: "Resep ikan salem balado dengan cabe ijo yang pedas dan lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/d21f9b1b1d517f07/680x482cq70/ikan-salem-balado-cabe-ijo-foto-resep-utama.jpg",
                 material: [
                     "2 ekor ikan salem keranjang",
                     "15 cabe ijo besar",
@@ -1558,6 +1617,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Pepes Ikan Salem",
                 description: "Resep pepes ikan salem dengan bahan dan cara membuatnya.",
+                urlImg: "https://img-global.cpcdn.com/recipes/76b9301e90ac13ba/680x482cq70/pepes-ikan-salem-foto-resep-utama.jpg",
                 material: [
                     "1 ikan salem, potong 2",
                     "2 lembar daun pisang",
@@ -1585,6 +1645,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Salem Bumbu Balado",
                 description: "Resep ikan salem dengan bumbu balado yang pedas dan lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/fe4cd6bb97fe34ba/680x482cq70/ikan-salem-balado-foto-resep-utama.jpg",
                 material: [
                     "4 ekor ikan salem",
                     "5 siung bawang merah",
@@ -1611,6 +1672,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Pindang Salem Lombok Ijo",
                 description: "Resep pindang salem dengan bumbu hijau khas Lombok.",
+                urlImg: "https://img-global.cpcdn.com/recipes/2cbe77d26ec2e7db/680x482cq70/ikan-salem-lombok-ijo-foto-resep-utama.jpg",
                 material: [
                     "2 ekor ikan pindang salem",
                     "2 siung bawang putih",
@@ -1636,6 +1698,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Salem Goreng Asam Jawa",
                 description: "Resep ikan salem goreng dengan citarasa asam jawa yang segar.",
+                urlImg: "https://img-global.cpcdn.com/recipes/fd73888cb9944f69/1200x630cq70/photo.jpg",
                 material: [
                     "500 gr ikan salem segar",
                     "1/2 sdt garam",
@@ -1671,12 +1734,14 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Goreng Sebelah",
                 description: "Resep goreng sebelah yang renyah di luar, lembut di dalam.",
+                urlImg: "https://img-global.cpcdn.com/recipes/4fde731aa825079d/400x400cq70/photo.jpg",
                 material: ["Ikan sebelah segar", "Tepung bumbu", "Minyak goreng"],
                 steps: ["Lumuri ikan sebelah dengan tepung bumbu hingga merata.", "Goreng ikan sebelah dalam minyak panas hingga kecokelatan dan matang sempurna.", "Angkat dan tiriskan sebentar sebelum disajikan."]
             },
             {
                 name: "Ikan Sebelah Goreng Tepung",
                 description: "Resep ikan sebelah goreng tepung yang renyah di luar dan lembut di dalam.",
+                urlImg: "https://img-global.cpcdn.com/recipes/2f7850d5d75b05af/680x482cq70/ikan-sebelah-goreng-tepung-foto-resep-utama.jpg",
                 material: [
                     "2 potong ikan sebelah (sekitar 500g)",
                     "1 sdt garam",
@@ -1700,6 +1765,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Sebelah Panggang Bumbu Kecap",
                 description: "Resep ikan sebelah panggang dengan bumbu kecap yang kaya rasa.",
+                urlImg: "https://i.pinimg.com/474x/e1/4c/78/e14c785966f9c4b3658744befa5f055e.jpg",
                 material: [
                     "2 potong ikan sebelah (sekitar 500g)",
                     "3 sdm kecap manis",
@@ -1719,6 +1785,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Sebelah Tumis Bumbu Padang",
                 description: "Resep ikan sebelah tumis dengan bumbu Padang yang pedas dan lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/175723872951ddc6/1200x630cq70/photo.jpg",
                 material: [
                     "2 potong ikan sebelah (sekitar 500g)",
                     "5 buah cabai merah besar, iris tipis",
@@ -1742,6 +1809,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Sebelah Bumbu Kuning",
                 description: "Resep ikan sebelah dengan bumbu kuning yang kaya rempah.",
+                urlImg: "https://img-global.cpcdn.com/recipes/4fa3af532e2636a1/680x482cq70/ikan-sebelah-bumbu-kuning-foto-resep-utama.jpg",
                 material: [
                     "2 potong ikan sebelah (sekitar 500g)",
                     "3 cm kunyit, bakar dan haluskan",
@@ -1766,6 +1834,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Flatfish (Ikan Sebelah) Bakar Cabe Hijau",
                 description: "Resep ikan sebelah bakar dengan sambal cabe hijau.",
+                urlImg: "https://img-global.cpcdn.com/recipes/1cf4941303f646b9/1200x630cq70/photo.jpg",
                 material: [
                     "2 ekor ikan Sebelah (Flat Fish) (dapat 2 ekor ukuran sedang)",
                     "Minyak kelapa",
@@ -1796,6 +1865,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Sambal Goreng Flatfish",
                 description: "Resep sambal goreng ikan sebelah dengan bahan marinasi dan sambal khas.",
+                urlImg: "https://img-global.cpcdn.com/recipes/175723872951ddc6/400x400cq70/photo.jpg",
                 material: [
                     "5 ekor ikan flatfish/ikan sebelah",
                     "Secukupnya minyak untuk menggoreng",
@@ -1825,6 +1895,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Sebelah Asem Manis Bombay Cabe",
                 description: "Resep ikan sebelah dengan bumbu asem manis dan tambahan bombay serta cabe.",
+                urlImg: "https://img-global.cpcdn.com/recipes/6d0e9b8488effff8/680x482cq70/ikan-sebelah-asem-manis-bombay-cabe-foto-resep-utama.jpg",
                 material: [
                     "1 ekor ikan sebelah (700g)",
                     "1 biji cabe hijau",
@@ -1851,6 +1922,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Sebelah Panggang Teflon Simpel",
                 description: "Resep ikan sebelah panggang dengan menggunakan teflon yang sederhana.",
+                urlImg: "https://img-global.cpcdn.com/recipes/0d5cdaa4a662402c/680x482cq70/ikan-bakar-teflon-sederhana-foto-resep-utama.jpg",
                 material: [
                     "1 ekor ikan sebelah, belah punggung",
                     "1 buah jeruk nipis, ambil airnya",
@@ -1873,6 +1945,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Sebelah Bumbu Kuning Panggang",
                 description: "Resep ikan sebelah panggang dengan bumbu kuning yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/07cc45db69e57712/680x482cq70/ikan-sebelah-bumbu-kuning-panggang-foto-resep-utama.jpg",
                 material: [
                     "1/2 kg ikan sebelah",
                     "1/2 bagian lemon",
@@ -1896,6 +1969,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Bihun dan Sup Ikan Sebelah",
                 description: "Resep bihun dan sup ikan sebelah yang segar.",
+                urlImg: "https://img-global.cpcdn.com/recipes/76d8fc55c8df71f1/1200x630cq70/photo.jpg",
                 material: [
                     "1/2 kg ikan sebelah yang telah dibersihkan",
                     "750 cc air",
@@ -1914,6 +1988,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Sebelah dengan Roomboter",
                 description: "Resep ikan sebelah dengan roomboter, garam, dan perasan lemon.",
+                urlImg: "https://img-global.cpcdn.com/recipes/7316adf719508c92/680x482cq70/ikan-sebelah-dengan-roomboter-foto-resep-utama.jpg",
                 material: [
                     "600 gr ikan sebelah",
                     "Secukupnya roomboter",
@@ -1932,6 +2007,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Gulai Ikan Sebelah",
                 description: "Resep gulai ikan sebelah dengan santan dan rempah-rempah.",
+                urlImg: "https://img-global.cpcdn.com/recipes/4e23e7797b58c714/680x482cq70/gulai-ikan-sebelah-foto-resep-utama.jpg",
                 material: [
                     "2 ekor ikan sebelah",
                     "1/2 butir kelapa (santan)",
@@ -1964,6 +2040,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Gulai Kunyit Ikan Sebelah",
                 description: "Resep gulai ikan sebelah dengan bumbu kunyit yang lezat.",
+                urlImg: "https://i.ytimg.com/vi/n9SY8nJcRGo/maxresdefault.jpg",
                 material: [
                     "3 potong ikan sebelah",
                     "1/4 sdt kunyit bubuk",
@@ -1992,6 +2069,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Sebelah Tumis Aceh",
                 description: "Resep tumisan ikan sebelah dengan bumbu khas Aceh.",
+                urlImg: "https://img-global.cpcdn.com/recipes/6dcc485c213e529e/680x482cq70/ikan-sebelah-tumis-aceh-foto-resep-utama.jpg",
                 material: [
                     "15 buah cabai merah",
                     "5 siung Bawang merah",
@@ -2022,6 +2100,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Sebelah Bakar Simpel",
                 description: "Resep bakar ikan sebelah yang simpel dan lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/d066f4ec5b7b23e1/1200x630cq70/photo.jpg",
                 material: [
                     "1,6 kg ikan sebelah/Pihi",
                     "3 sdm saos tiram",
@@ -2063,12 +2142,14 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Sambal Selar Bulat",
                 description: "Resep sambal selar bulat yang pedas dan segar.",
+                urlImg: "https://img-global.cpcdn.com/recipes/4741e74b226ee077/680x482cq70/sambal-ikan-selar-foto-resep-utama.jpg",
                 material: ["Ikan selar bulat segar", "Bumbu sambal", "Tomat", "Cabe"],
                 steps: ["Potong ikan selar bulat menjadi bagian-bagian kecil.", "Tumis bumbu sambal hingga harum.", "Masukkan potongan ikan selar bulat, tomat, dan cabe. Masak hingga matang."]
             },
             {
                 name: "Ikan Selar Bulat Goreng Tepung",
                 description: "Resep ikan selar bulat yang digoreng dengan tepung crispy.",
+                urlImg: "https://img-global.cpcdn.com/recipes/2b5e203f01f4b26f/680x482cq70/ikan-selar-goreng-tepung-foto-resep-utama.jpg",
                 material: [
                     "4 ekor ikan selar bulat, bersihkan dan lumuri dengan air jeruk nipis",
                     "Garam secukupnya",
@@ -2088,6 +2169,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Selar Bulat Lada Hitam",
                 description: "Resep ikan selar bulat dengan saus lada hitam yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/8ec579225e320a3b/680x482cq70/ikan-lada-hitam-foto-resep-utama.jpg",
                 material: [
                     "4 ekor ikan selar bulat, bersihkan",
                     "2 siung bawang putih, cincang halus",
@@ -2120,6 +2202,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Selar Bulat Panggang dengan Bumbu Kari",
                 description: "Resep ikan selar bulat panggang dengan bumbu kari yang kaya rasa.",
+                urlImg: "https://img-global.cpcdn.com/recipes/f5404486ea82918a/680x482cq70/ikan-panggang-bumbu-kari-foto-resep-utama.jpg",
                 material: [
                     "4 ekor ikan selar bulat, bersihkan",
                     "3 sendok makan bubuk kari",
@@ -2140,6 +2223,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Selar Bulat Asam Manis",
                 description: "Resep ikan selar bulat dengan saus asam manis yang segar.",
+                urlImg: "https://img-global.cpcdn.com/recipes/6ae7a1006457c407/680x482cq70/asam-manis-ikan-selar-foto-resep-utama.jpg",
                 material: [
                     "4 ekor ikan selar bulat, bersihkan",
                     "2 sendok makan saus tomat",
@@ -2168,6 +2252,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Selar Bulat Bumbu Kemangi",
                 description: "Resep ikan selar bulat dengan bumbu kemangi yang segar.",
+                urlImg: "https://img-global.cpcdn.com/recipes/66af646c42319010/680x482cq70/ikan-selar-bumbu-rujakkemangi-foto-resep-utama.jpg",
                 material: [
                     "4 ekor ikan selar bulat, bersihkan",
                     "2 ikat kemangi segar",
@@ -2194,6 +2279,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Selar Masak Tauco",
                 description: "Resep ikan selar yang dimasak dengan bumbu tauco.",
+                urlImg: "https://img-global.cpcdn.com/recipes/3f10868909c333d9/680x482cq70/ikan-selar-masak-tauco-simple-foto-resep-utama.jpg",
                 material: [
                     "1/2 kg ikan selar",
                     "1 ons cabe hijau, iris memanjang",
@@ -2220,6 +2306,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Selar Bumbu Royco",
                 description: "Resep ikan selar dengan bumbu rempah dan Royco.",
+                urlImg: "https://img-global.cpcdn.com/recipes/b7178405d6bcdbdb/680x482cq70/ikan-selar-bumbu-pedas-manis-foto-resep-utama.jpg",
                 material: [
                     "2 ekor ikan selar segar",
                     "5 buah cabe keriting",
@@ -2243,6 +2330,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Tekwan Ikan Selar ala Ariema",
                 description: "Resep tekwan ikan selar dengan bahan kuah dan pelengkap.",
+                urlImg: "https://img-global.cpcdn.com/recipes/535a5d2e5415269a/680x482cq70/tekwan-ikan-selar-ala-ariema-foto-resep-utama.jpg",
                 material: [
                     "500 gr ikan Selar",
                     "500 gr tepung tapioka",
@@ -2284,6 +2372,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Selar Pesmol (tanpa cuka)",
                 description: "Resep ikan selar pesmol tanpa cuka dengan bumbu rempah yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/82a4ea4055e2a285/680x482cq70/selar-pesmol-tanpa-cuka-foto-resep-utama.jpg",
                 material: [
                     "8 ikan selar",
                     "2 sdm perasan jeruk nipis untuk rendaman ikan",
@@ -2328,12 +2417,14 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Goreng Tenggiri Papan",
                 description: "Resep goreng tenggiri papan yang gurih dan lezat.",
+                urlImg: "https://cdn0-production-images-kly.akamaized.net/QtiYDvj_GrINDPHaxcHSuyRA-BA=/0x18:5760x3264/800x450/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/4260417/original/091160900_1670988146-shutterstock_1331910320.jpg",
                 material: ["Ikan tenggiri papan segar", "Tepung bumbu", "Minyak goreng"],
                 steps: ["Lumuri ikan tenggiri papan dengan tepung bumbu hingga merata.", "Goreng ikan tenggiri papan dalam minyak panas hingga kecokelatan dan matang sempurna.", "Angkat dan tiriskan sebentar sebelum disajikan."]
             },
             {
                 name: "Pepes Ikan Tenggiri",
                 description: "Resep pepes ikan tenggiri yang lezat dan bergizi.",
+                urlImg: "https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/sasefoto/original/38495_pepes-tenggiri-kemangi.jpg",
                 material: [
                     "500 gram ikan tenggiri, potong sesuai selera",
                     "2 buah jeruk nipis, ambil airnya",
@@ -2358,6 +2449,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Gulai Ikan Tenggiri",
                 description: "Resep gulai ikan tenggiri yang kaya rempah.",
+                urlImg: "https://img-global.cpcdn.com/recipes/814abf7450f06c56/1200x630cq70/photo.jpg",
                 material: [
                     "500 gram ikan tenggiri, potong-potong",
                     "200 ml santan kental",
@@ -2394,6 +2486,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Tenggiri Asam Pedas",
                 description: "Resep ikan tenggiri asam pedas yang segar dan menggugah selera.",
+                urlImg: "https://img-global.cpcdn.com/recipes/109fbde6e73da6eb/680x482cq70/tenggiri-asam-pedas-foto-resep-utama.jpg",
                 material: [
                     "500 gram ikan tenggiri, potong-potong",
                     "2 buah tomat, potong dadu",
@@ -2427,6 +2520,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Tenggiri Goreng Tepung",
                 description: "Resep ikan tenggiri goreng tepung yang renyah di luar dan lembut di dalam.",
+                urlImg: "https://img-global.cpcdn.com/recipes/4ecb52539b0919b9/680x482cq70/tenggiri-goreng-tepung-foto-resep-utama.jpg",
                 material: [
                     "500 gram ikan tenggiri, potong sesuai selera",
                     "1 sdt garam",
@@ -2452,6 +2546,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Tenggiri Bakar",
                 description: "Resep ikan tenggiri bakar dengan cita rasa yang khas dan aroma harum dari bumbu.",
+                urlImg: "https://cdn.idntimes.com/content-images/community/2023/03/screenshot-20230319-095915-instagram-1da19fc91023829c7308c91d271ec0d8_600x400.jpg",
                 material: [
                     "500 gram ikan tenggiri, bersihkan dan buang sisiknya",
                     "3 sdm kecap manis",
@@ -2474,6 +2569,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Tenggiri Masak Kari",
                 description: "Resep ikan tenggiri masak kari yang kaya rempah dan gurih.",
+                urlImg: "https://img-global.cpcdn.com/recipes/4cabe10c95b0bc4e/680x482cq70/masak-kari-ikan-tenggiri-kari-india-foto-resep-utama.jpg",
                 material: [
                     "500 gram ikan tenggiri, potong sesuai selera",
                     "200 ml santan kental",
@@ -2503,6 +2599,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Tenggiri Sambal Matah",
                 description: "Resep ikan tenggiri dengan sambal matah yang segar dan pedas.",
+                urlImg: "https://img-global.cpcdn.com/recipes/a0c8695b70d37f87/680x482cq70/ikan-tenggiri-sambal-matah-foto-resep-utama.jpg",
                 material: [
                     "500 gram ikan tenggiri, potong menjadi beberapa bagian",
                     "3 lembar daun jeruk",
@@ -2534,6 +2631,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Ikan Tenggiri Gulai",
                 description: "Resep ikan tenggiri dalam gulai khas Indonesia yang kaya rempah.",
+                urlImg: "https://i.ytimg.com/vi/uqDTgKbpCQc/sddefault.jpg",
                 material: [
                     "500 gram ikan tenggiri, potong menjadi beberapa bagian",
                     "500 ml santan kental",
@@ -2567,6 +2665,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Panggang Tenggiri dengan Saus Lemon Butter",
                 description: "Resep panggang ikan tenggiri dengan saus lemon butter yang segar dan lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/a3d88ab9c39014e3/1200x630cq70/photo.jpg",
                 material: [
                     "500 gram ikan tenggiri",
                     "1 buah lemon",
@@ -2590,6 +2689,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Gulai Tenggiri Pedas",
                 description: "Resep gulai ikan tenggiri dengan bumbu pedas yang menggugah selera.",
+                urlImg: "https://img-global.cpcdn.com/recipes/2aa5e246bd2dffa6/1200x630cq70/photo.jpg",
                 material: [
                     "500 gram ikan tenggiri, potong menjadi beberapa bagian",
                     "400 ml santan kental",
@@ -2614,6 +2714,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Tenggiri Bakar Bumbu Rujak",
                 description: "Resep tenggiri bakar dengan bumbu rujak yang segar dan pedas.",
+                urlImg: "https://i.pinimg.com/474x/48/c5/0b/48c50b8c24846367cfeb2b12beb4d1f4.jpg",
                 material: [
                     "500 gram ikan tenggiri",
                     "3 sdm air jeruk nipis",
@@ -2654,6 +2755,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Steak Tuna",
                 description: "Resep steak tuna yang juicy dan lezat.",
+                urlImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLb_iE4wb4lDjvG8dNRVPrVLSU22kTY8cgIA&s",
                 material: ["Daging tuna segar", "Bumbu steak", "Minyak zaitun"],
                 steps: [
                     "Potong daging tuna menjadi steak.",
@@ -2664,6 +2766,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Tuna Bakar Rica-Rica",
                 description: "Resep tuna bakar rica-rica yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/1d5923c6608ab87b/680x482cq70/sup-tuna-sirip-kuning-anti-eneg-no-amisss-foto-resep-utama.jpg",
                 material: [
                     "1/2 kg tuna sirip kuning",
                     "4 siung bawang putih",
@@ -2692,6 +2795,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Sup Tuna Sirip Kuning",
                 description: "Resep sup tuna sirip kuning yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/1d5923c6608ab87b/680x482cq70/sup-tuna-sirip-kuning-anti-eneg-no-amisss-foto-resep-utama.jpg",
                 material: [
                     "1/2 Kg Ikan Tuna",
                     "800 ml Air",
@@ -2719,6 +2823,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Tuna Suwir Pedas",
                 description: "Resep tuna suwir pedas yang lezat.",
+                urlImg: "https://i.ytimg.com/vi/mXXjjInkcVE/maxresdefault.jpg",
                 material: [
                     "1 kg ikan tuna segar",
                     "10 bh cabe merah keriting",
@@ -2745,6 +2850,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Tuna Balado",
                 description: "Resep tuna balado yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/f150ff7deaeac1bf/680x482cq70/tuna-balado-foto-resep-utama.jpg",
                 material: [
                     "250 gram Tuna segar",
                     "6 Buah cabe merah besar",
@@ -2770,6 +2876,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Tuna Goreng Sambal Bawang",
                 description: "Resep tuna goreng sambal bawang yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/390ad338082aac4f/680x482cq70/resep-tuna-sambal-bawang-foto-resep-utama.jpg",
                 material: [
                     "3 potong tuna",
                     "Marinasi:",
@@ -2796,6 +2903,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Gulai Tuna Kacang Panjang Tanpa Santan",
                 description: "Resep gulai tuna kacang panjang tanpa santan yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/ddc28022f29ff922/680x482cq70/gulai-tuna-kacang-panjang-foto-resep-utama.jpg",
                 material: [
                     "200 gram fillet tuna, potong sesuai selera",
                     "4 lonjor kacang panjang",
@@ -2823,6 +2931,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Steak Salmon dan Tuna",
                 description: "Resep steak salmon dan tuna yang lezat.",
+                urlImg: "https://asset-a.grid.id/crop/0x0:0x0/x/photo/2018/10/24/975525009.jpg",
                 material: [
                     "2 slice salmon",
                     "2 slice tuna",
@@ -2843,6 +2952,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Oseng Tuna Telur Daun Jeruk",
                 description: "Resep oseng tuna telur daun jeruk yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/402c6dc982ca69b7/1200x630cq70/photo.jpg",
                 material: [
                     "1 kaleng tuna",
                     "1 butir telur",
@@ -2866,6 +2976,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Risoles Tuna Mayo",
                 description: "Resep risoles tuna mayo yang lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/2135586abb2d7743/1200x630cq70/photo.jpg",
                 material: [
                     "500 gr tepung terigu",
                     "60 gr tepung tapioka",
@@ -2897,6 +3008,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Salad Tuna",
                 description: "Resep salad tuna yang segar dan lezat.",
+                urlImg: "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2020/04/Tuna-Salad-3.jpg",
                 material: [
                     "2 kaleng tuna, dikeringkan",
                     "2 batang selada air, potong-potong",
@@ -2922,6 +3034,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Tuna Carbonara",
                 description: "Resep pasta carbonara dengan tambahan tuna yang lezat.",
+                urlImg: "https://images.yummy.ph/yummy/uploads/2023/04/tunacarbonararecipe2.jpg",
                 material: [
                     "250 gram pasta (spaghetti, fettuccine, atau jenis pasta lainnya)",
                     "2 kaleng tuna, dikeringkan",
@@ -2949,6 +3062,7 @@ export const fishModelDatas: IFishModel[] = [
             {
                 name: "Tuna Sambal Sarden",
                 description: "Resep tuna sambal sarden yang pedas dan lezat.",
+                urlImg: "https://img-global.cpcdn.com/recipes/b63ec2635062e3d3/680x482cq70/tuna-bumbu-sarden-foto-resep-utama.jpg",
                 material: [
                     "2 kaleng tuna, dikeringkan",
                     "2 siung bawang putih, cincang halus",

@@ -12,6 +12,7 @@ export interface IFishModel {
 
 interface ProductRecipe {
     name: string;
+    urlImg: string;
     description: string;
     material: string[];
     steps: string[]
