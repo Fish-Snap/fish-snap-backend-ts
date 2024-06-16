@@ -24,6 +24,7 @@ export class NewsService {
     }
 
     async findNewsByRangeDate(dto: RangeDateDto) {
+        if (!dto.startDate || !dto.endDate) return await this.newsRepository.findAllNews();
         return await this.newsRepository.findNewsByRangeDate(dto);
     }
 
