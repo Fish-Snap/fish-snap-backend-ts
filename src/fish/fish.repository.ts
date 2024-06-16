@@ -34,7 +34,7 @@ export class FishRepository {
                 const fishPredict = await this.gatewayService.predictFish(file)
                 if (!fishPredict.isDetected) throw new BadRequestException('Ikan tidak terdeteksi');
                 const fishModel = await this.fishModelQuery.findByCodeOrThrow(fishPredict.fish_detection);
-
+                const productRecipe = generateRandomArray(fishModel.productRecipe);
                 // upload file
                 const remoteFileName = getCustomFilename(
                     `fish-${Date.now()}-${Math.round(Math.random() * 1e9)}`,
@@ -51,7 +51,7 @@ export class FishRepository {
                     otherNames: fishModel.otherNames,
                     description: fishModel.description,
                     location: fishModel.location as any,
-                    productRecipe: fishModel.productRecipe as any
+                    productRecipe: productRecipe as any
                 }
                 result = await this.fishHistoryQuery.createFishHistory(payload, tx);
             });
@@ -64,4 +64,24 @@ export class FishRepository {
     async findManyFishHistoryByIdUser(idUser: string) {
         return await this.fishHistoryQuery.findManyByIdUser(idUser);
     }
+}
+
+
+function generateRandomArray(arr: any[]) {
+    const maxLength = arr.length;
+    let length = 0;
+
+    // Loop until we get a non-empty array
+    while (length === 0) {
+        length = Math.floor(Math.random() * (maxLength + 1)); // Generate random length
+    }
+
+    const randomArray = [];
+
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * maxLength); // Generate random index
+        randomArray.push(arr[randomIndex]);
+    }
+
+    return randomArray;
 }
