@@ -7,18 +7,13 @@ export class CreateNewsDto {
     @IsNotEmpty()
     title: string;
 
-    @ValidateIf((o: CreateNewsDto) => o.type === TypeNews.INTERNAL)
-    @IsArray()
-    @ArrayNotEmpty()
-    content: string[];
+    @IsString()
+    @IsNotEmpty()
+    content: string;
 
     @IsOptional()
     @IsString()
     urlThumbImg?: string;
-
-    @IsOptional()
-    @IsString()
-    urlHeaderImg?: string;
 
     @ValidateIf((o: CreateNewsDto) => o.type === TypeNews.EXTERNAL)
     @IsNotEmpty()
