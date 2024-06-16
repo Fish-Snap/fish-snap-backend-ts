@@ -42,6 +42,23 @@ export class AuthService {
     return me
   }
 
+  async sendForgotPassword(email: string) {
+    return await this.authRepository.sendForgotPassword(email);
+  }
+
+  async resetPassword(token: string, newPassword: string) {
+    const { sub } = await this.authRepository.decodeJwtToken(token);
+    return await this.authRepository.resetPassword(sub, newPassword);
+  }
+
+  async findUserByIdOrThrow(id: string) {
+    return await this.authRepository.findUserByIdOrThrow(id);
+  }
+
+  async verifyForgotPassword(id: string, codeVerify: number) {
+    return await this.authRepository.verifyForgotPassword(id, codeVerify);
+  }
+
   /*
   |--------------------------------------------------------------------------
   | Admin Service

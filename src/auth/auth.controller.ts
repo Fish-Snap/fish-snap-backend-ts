@@ -23,6 +23,8 @@ import { RegisterUserDto } from './dto/register-user.dto';
 import { VerifyEmailDto } from './dto/verify-email.dto';
 import { ChangePasswordDto } from './dto/change-password.dto';
 import { TypeRoleUser } from '@prisma/client';
+import { ForgotPasswordDto } from './dto/forgot-password.dto';
+import { ResetPasswordDto } from './dto/reset-password.dto';
 @Controller('auth')
 export class AuthController {
   constructor(
@@ -47,6 +49,29 @@ export class AuthController {
   async login(@Body() dto: LoginUserDto, @Res() res) {
     const result = await this.authService.login(dto);
     return this.httpHelper.formatResponse(res, HttpStatus.OK, result)
+  }
+
+  @Post('forgot-password')
+  async sendForgotPassword(@Body() dto: ForgotPasswordDto, @Res() res) {
+    await this.authService.sendForgotPassword(dto.email);
+    return this.httpHelper.formatResponse(res, HttpStatus.OK, {})
+  }
+
+  @Get('forgot-password')
+  @Render('reset-password')
+  async forgotPassword(@Query() dto: VerifyEmailDto) {
+    const result = await this.authService.verifyForgotPassword(dto.idUser, dto.codeVerify);
+    const resetPasswordToken = result.access_token;
+    return { resetPasswordToken }
+  }
+
+  @UseGuards(JwtGuard, RoleGuard)
+  @Roles(TypeRoleUser.USER)
+  @Access(TokenType.BRANCH)
+  @Post('reset-password')
+  async resetPassword(@Body() dto: ResetPasswordDto, @Res() res, @Headers("authorization") authorization: string) {
+    await this.authService.resetPassword(authorization, dto.newPassword);
+    return this.httpHelper.formatResponse(res, HttpStatus.OK, {})
   }
 
   @Post('change-password')
