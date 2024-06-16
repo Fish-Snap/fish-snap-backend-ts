@@ -69,19 +69,14 @@ export class FishRepository {
 
 function generateRandomArray(arr: any[]) {
     const maxLength = arr.length;
-    let length = 0;
+    const length = Math.max(1, Math.floor(Math.random() * (maxLength + 1))); // Minimal 1 data
 
-    // Loop until we get a non-empty array
-    while (length === 0) {
-        length = Math.floor(Math.random() * (maxLength + 1)); // Generate random length
+    if (length === maxLength) {
+        return [...arr]; // Return a shuffled copy of the original array
     }
 
-    const randomArray = [];
-
-    for (let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * maxLength); // Generate random index
-        randomArray.push(arr[randomIndex]);
-    }
+    const shuffledArray = [...arr].sort(() => Math.random() - 0.5); // Shuffle the original array
+    const randomArray = shuffledArray.slice(0, length); // Take the first 'length' elements
 
     return randomArray;
 }
