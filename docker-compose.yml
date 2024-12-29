@@ -1,6 +1,25 @@
 version: '3.8'
 
 services:
+  fishsnap-backend-ts-dev:
+      container_name: fishsnap-backend-ts-dev
+      build:
+        context: ./
+        dockerfile: ./Dockerfile
+      command: ["sh", "-c", "chmod +x ./entrypoint.sh && ./entrypoint.sh"]
+      ports:
+        - ${PORT_BE}:${PORT_DEFAULT_3000}
+      environment:
+        DATABASE_URL: ${DATABASE_URL_LOCAL}
+        BASE_URL: ${BASE_URL}
+        BASE_URL_STORAGE_BUCKET: ${BASE_URL_STORAGE_BUCKET_DEV}
+      volumes:
+        - ./:/usr/src/app
+        - /usr/src/app/node_modules
+      depends_on:
+        - postgres_fishsnap
+      restart: unless-stopped
+
   postgres_fishsnap:
     container_name: fishsnap_postgres_db_dev
     image: postgres:14
